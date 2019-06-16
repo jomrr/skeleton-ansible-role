@@ -1,0 +1,10 @@
+---
+# role: {{ role_name }}
+# file: molecule/default/playbook.yml
+
+- name: Converge
+  hosts: all
+  become: True
+  roles:
+    - role: {{ role_name }}
+{{ blank_line }}

@@ -1,0 +1,52 @@
+---
+# role: {{ role_name }}
+# file: molecule/kvm/molecule.yml
+
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    name: libvirt
+    type: libvirt
+    options:
+      memory: 1024
+      cpus: 1
+lint:
+  name: yamllint
+  options:
+    config-file: molecule/shared/yamllint.yml
+platforms:
+  - name: default-archlinux
+    box: "archlinux/archlinux"
+  - name: default-centos7
+    box: "centos/7"
+  - name: default-debian9
+    box: "debian/stretch64"
+  - name: default-ubuntu1804
+    box: "generic/ubuntu1804"
+provisioner:
+  name: ansible
+  log: true
+  lint:
+    name: ansible-lint
+  playbooks:
+    prepare: ../shared/prepare.yml
+    converge: ../shared/playbook.yml
+  inventory:
+    group_vars:
+      all:
+        {{ role_name|replace('ansible-role-', 'role_') }}_enabled: true
+scenario:
+  name: default
+verifier:
+  name: testinfra
+  env:
+    PYTHONWARNINGS: "ignore"
+  directory: ../tests
+  options:
+    v: true
+    sudo: true
+  lint:
+    name: flake8
+{{ blank_line }}

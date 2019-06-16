@@ -1,0 +1,30 @@
+---
+# role: {{ role_name }}
+# file: molecule/default/prepare.yml
+
+- name: Prepare
+  hosts: all
+  become: True
+  gather_facts: False
+  tasks:
+    - name: Install python for Ansible (Alpine)
+      raw: apk add -y python
+      changed_when: False
+      ignore_errors: True
+    - name: Install python for Ansible (Archlinux)
+      raw: pacman --noconfirm -S python
+      changed_when: False
+      ignore_errors: True
+    - name: Install python for Ansible (Debian)
+      raw: apt-get -y update && apt-get install -y python-minimal
+      changed_when: False
+      ignore_errors: True
+    - name: Install python for Ansible (RedHat)
+      raw: yum -y update && yum -y install python
+      changed_when: False
+      ignore_errors: True
+    - name: Install python for Ansible (Suse)
+      raw: zypper -y update && zypper -y install python
+      changed_when: False
+      ignore_errors: True
+{{ blank_line }}
