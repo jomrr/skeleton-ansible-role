@@ -3,7 +3,6 @@
 Skeleton for use with ansible-galaxy to create a new role.
 
 ## Requirements
-===
 
 Ansible 2.5 or higher is required.
 
@@ -36,7 +35,6 @@ vagrant plugin install vagrant-libvirt
 ```
 
 ## Usage
-===
 
 To create a new ansible role with this skeleton, do the following:
 
@@ -46,7 +44,6 @@ ansible-galaxy --role-skeleton=ansible-skeleton ansible-role-<rolename>
 ```
 
 ## License and Author
-===
 
 - Author:: Jonas Mauer (<jam@kabelmail.net>)
 - Copyright:: 2019, Jonas Mauer
