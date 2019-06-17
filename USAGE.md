@@ -1,6 +1,6 @@
 # ansible-skeleton
 
-Skeleton for use with ansible-galaxy to create a new role.
+Skeleton for use with ansible-galaxy to create a new ansible role.
 
 ## Requirements
 
