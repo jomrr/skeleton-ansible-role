@@ -6,15 +6,24 @@ Skeleton for use with ansible-galaxy to create a new ansible role.
 
 Ansible 2.5 or higher is required.
 
-To use the predefined tests you need to have the following packages installed:
+For running the default tests with molecule docker you need the following packages installed:
+
+* docker
+* molecule
+* molecule[docker]
+
+To use the predefined tests with kvm/libvirt you need to have the following packages installed:
 
 * qemu
 * virt-manager
 * molecule
 * molecule[vagrant]
+* molecule[vagrant]
 * molecule[libvirt]
 * [vagrant](http://vagrantup.com)
 * vagrant-libvirt
+
+Your user needs to be in the `libvirt` system group, because the qemu system domain is used.
 
 To install os specific requirements please search the internet.
 

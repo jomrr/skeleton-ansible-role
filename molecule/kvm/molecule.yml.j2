@@ -5,41 +5,40 @@
 dependency:
   name: galaxy
 driver:
-  name: docker
+  name: vagrant
+  provider:
+    name: libvirt
+    type: libvirt
+    options:
+      memory: 1024
+      cpus: 1
 lint:
   name: yamllint
   options:
     config-file: molecule/shared/yamllint.yml
 platforms:
-  - name: {{ role_name|replace('ansible-role-', '') }}-alpine39
-    image: "alpine:3.9"
-  - name: {{ role_name|replace('ansible-role-', '') }}-amazon2
-    image: "amazonlinux:2"
   - name: {{ role_name|replace('ansible-role-', '') }}-arch
-    image: "archlinux/base"
+    box: "archlinux/archlinux"
   - name: {{ role_name|replace('ansible-role-', '') }}-centos7
-    image: "centos:centos7"
+    box: "centos/7"
   - name: {{ role_name|replace('ansible-role-', '') }}-debian9
-    image: "debian:stretch"
-  - name: {{ role_name|replace('ansible-role-', '') }}-opensuse-leap
-    image: "opensuse:leap"
-  - name: {{ role_name|replace('ansible-role-', '') }}-oracle7
-    image: "oraclelinux:7"
+    box: "debian/stretch64"
   - name: {{ role_name|replace('ansible-role-', '') }}-ubuntu1804
-    image: "ubuntu:18.04"
+    box: "generic/ubuntu1804"
 provisioner:
   name: ansible
   log: true
   lint:
     name: ansible-lint
   playbooks:
+    prepare: ../shared/prepare.yml
     converge: ../shared/playbook.yml
   inventory:
     group_vars:
       all:
         {{ role_name|replace('ansible-role-', 'role_') }}_enabled: true
 scenario:
-  name: default
+  name: kvm
 verifier:
   name: testinfra
   env:
