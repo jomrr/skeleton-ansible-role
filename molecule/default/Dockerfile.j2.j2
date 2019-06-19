@@ -6,13 +6,42 @@ FROM {{ item.registry.url }}/{{ item.image }}
 FROM {{ item.image }}                                                             
 {% endif %}                                                                       
 
-RUN if [ $(command -v apt-get) ]; then apt-get update && apt-get install -y python sudo bash ca-certificates && apt-get clean; \
-    elif [ $(command -v dnf) ]; then dnf makecache && dnf --assumeyes install python sudo python-devel python*-dnf bash && dnf clean all; \
-    elif [ $(command -v yum) ]; then yum makecache fast && yum install -y python sudo yum-plugin-ovl bash && sed -i 's/plugins=0/plugins=1/g' /etc/yum.conf && yum clean all; \
-    elif [ $(command -v zypper) ]; then zypper refresh && zypper install -y python sudo bash python-xml && zypper clean -a; \
-    elif [ $(command -v apk) ]; then apk update && apk add --no-cache python sudo bash ca-certificates; \
-    elif [ $(command -v xbps-install) ]; then xbps-install -Syu && xbps-install -y python sudo bash ca-certificates && xbps-remove -O; \
-    elif [ $(command -v emerge) ]; then emerge --ask n =dev-lang/python-2\* gentoolkit; \
-    elif [ $(command -v pacman) ]; then pacman --sync --noconfirm --refresh python bash sudo grep systemd; \
-    elif [ $(command -v xbps-install) ]; then xbps-install -Syu && xbps-install -y python sudo bash ca-certificates && xbps-remove -O; fi
+ENV container docker
+
+# Alpine
+RUN if [ $(command -v apk) ]; then \
+    apk update && \
+    apk add --no-cache python sudo bash ca-certificates; fi
+
+# Archlinux
+RUN if [ $(command -v pacman) ]; then \
+    pacman --sync --noconfirm --refresh python bash sudo grep; fi
+
+# Debian
+RUN if [ $(command -v apt-get) ]; then \
+    apt-get update && \
+    apt-get install -y python sudo bash ca-certificates && \
+    apt-get clean; fi
+
+# Fedora
+RUN if [ $(command -v dnf) ]; then \
+    dnf makecache && \
+    dnf --assumeyes install python sudo python-devel python*-dnf bash && \
+    dnf clean all; fi
+
+# Gentoo
+RUN if [ $(command -v emerge) ]; then \
+    emerge --ask n =dev-lang/python-2\* gentoolkit; fi
+
+# RedHat/CentOS
+RUN if [ $(command -v yum) ]; then \
+    yum makecache fast && \
+    yum install -y python sudo yum-plugin-ovl bash && \
+    sed -i 's/plugins=0/plugins=1/g' /etc/yum.conf && yum clean all; fi
+
+# SuSE
+RUN if [ $(command -v zypper) ]; then \
+    zypper refresh && \
+    zypper install -y python sudo bash python-xml && \
+    zypper clean -a; fi
 {%- endraw %}
