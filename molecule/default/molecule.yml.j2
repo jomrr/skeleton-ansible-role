@@ -1,6 +1,6 @@
 ---
 # role: {{ role_name }}
-# file: molecule/kvm/molecule.yml
+# file: molecule/default/molecule.yml
 
 dependency:
   name: galaxy
@@ -11,22 +11,13 @@ lint:
   options:
     config-file: molecule/shared/yamllint.yml
 platforms:
-  - name: {{ role_name|replace('ansible-role-', '') }}-alpine39
-    image: "alpine:3.9"
-  - name: {{ role_name|replace('ansible-role-', '') }}-amazon2
-    image: "amazonlinux:2"
-  - name: {{ role_name|replace('ansible-role-', '') }}-arch
-    image: "archlinux/base"
-  - name: {{ role_name|replace('ansible-role-', '') }}-centos7
-    image: "centos:centos7"
-  - name: {{ role_name|replace('ansible-role-', '') }}-debian9
-    image: "debian:stretch"
-  - name: {{ role_name|replace('ansible-role-', '') }}-opensuse-leap
-    image: "opensuse:leap"
-  - name: {{ role_name|replace('ansible-role-', '') }}-oracle7
-    image: "oraclelinux:7"
-  - name: {{ role_name|replace('ansible-role-', '') }}-ubuntu1804
-    image: "ubuntu:18.04"
+  - name: {{ role_name|replace('ansible-role-', '') }}-default
+    image: ${MOLECULE_DIST:-"jam82/ubuntu-molecule:18.04"}
+    command: ${MOLECULE_DOCKER_CMD:-""}
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
 provisioner:
   name: ansible
   log: true

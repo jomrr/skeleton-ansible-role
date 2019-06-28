@@ -1,0 +1,163 @@
+---
+# role: ansible-role-ssh
+# file: molecule/all/molecule.yml
+
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+  options:
+    config-file: molecule/shared/yamllint.yml
+platforms:
+  - name: {{ role_name|replace('ansible-role-', '') }}-amazon
+    image: "jam82/amazon-molecule:latest"
+    command: "/usr/lib/systemd/systemd"
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name|replace('ansible-role-', '') }}-arch
+    image: "jam82/arch-molecule:latest"
+    command: "/usr/lib/systemd/systemd"
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name|replace('ansible-role-', '') }}-centos6
+    image: "jam82/centos-molecule:6"
+    command: "/sbin/init"
+    pre_build_image: true
+    privileged: true
+  - name: {{ role_name|replace('ansible-role-', '') }}-centos7
+    image: "jam82/centos-molecule:7"
+    command: "/usr/lib/systemd/systemd"
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name|replace('ansible-role-', '') }}-debian8
+    image: "jam82/debian-molecule:8"
+    command: "/lib/systemd/systemd"
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name|replace('ansible-role-', '') }}-debian9
+    image: "jam82/debian-molecule:9"
+    command: "/lib/systemd/systemd"
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name|replace('ansible-role-', '') }}-debian10
+    image: "jam82/debian-molecule:10"
+    command: "/lib/systemd/systemd"
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name|replace('ansible-role-', '') }}-debian
+    image: "jam82/debian-molecule:latest"
+    command: "/lib/systemd/systemd"
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name|replace('ansible-role-', '') }}-suse15
+    image: "jam82/suse-molecule:15"
+    command: "/usr/lib/systemd/systemd"
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: ssh-suse
+    image: "jam82/suse-molecule:latest"
+    command: "/usr/lib/systemd/systemd"
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name|replace('ansible-role-', '') }}-suse-tumbleweed
+    image: "jam82/suse-molecule:tumbleweed"
+    command: "/usr/lib/systemd/systemd"
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name|replace('ansible-role-', '') }}-oracle6
+    image: "jam82/oracle-molecule:6"
+    command: "/sbin/init"
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name|replace('ansible-role-', '') }}-oracle7
+    image: "jam82/oracle-molecule:7"
+    command: "/usr/lib/systemd/systemd"
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name|replace('ansible-role-', '') }}-oracle
+    image: "jam82/oracle-molecule:latest"
+    command: "/usr/lib/systemd/systemd"
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name|replace('ansible-role-', '') }}-ubuntu1604
+    image: "jam82/ubuntu-molecule:16.04"
+    command: "/lib/systemd/systemd"
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name|replace('ansible-role-', '') }}-ubuntu1804
+    image: "jam82/ubuntu-molecule:18.04"
+    command: "/lib/systemd/systemd"
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name|replace('ansible-role-', '') }}-ubuntu
+    image: "jam82/ubuntu-molecule:latest"
+    command: "/lib/systemd/systemd"
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+provisioner:
+  name: ansible
+  log: true
+  lint:
+    name: ansible-lint
+  playbooks:
+    converge: ../shared/playbook.yml
+  inventory:
+    group_vars:
+      all:
+        {{ role_name|replace('ansible-role-', 'role_') }}_enabled: true
+scenario:
+  name: all
+  test_sequence:
+    - lint
+    - destroy
+    - syntax
+    - create
+    - converge
+    - idempotence
+    - verify
+    - destroy
+verifier:
+  name: testinfra
+  env:
+    PYTHONWARNINGS: "ignore"
+  directory: ../tests
+  options:
+    v: true
+    sudo: true
+  lint:
+    name: flake8
+{{ blank_line }}
