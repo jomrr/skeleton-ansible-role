@@ -1,4 +1,4 @@
-# ansible-skeleton
+# ansible-role-skeleton
 
 Skeleton for use with ansible-galaxy to create a new ansible role.
 
@@ -48,8 +48,8 @@ vagrant plugin install vagrant-libvirt
 To create a new ansible role with this skeleton, do the following:
 
 ```shell
-git clone https://github.com/jam82/ansible-skeleton.git
-ansible-galaxy --role-skeleton=ansible-skeleton ansible-role-<rolename>
+git clone https://github.com/jam82/ansible-role-skeleton.git
+ansible-galaxy --role-skeleton=ansible-role-skeleton ansible-role-<rolename>
 ```
 
 ## License and Author
