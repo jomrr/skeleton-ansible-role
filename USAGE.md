@@ -49,7 +49,7 @@ To create a new ansible role with this skeleton, do the following:
 
 ```shell
 git clone https://github.com/jam82/ansible-role-skeleton.git
-ansible-galaxy --role-skeleton=ansible-role-skeleton ansible-role-<rolename>
+ansible-galaxy init --role-skeleton=ansible-role-skeleton ansible-role-<rolename>
 ```
 
 ## License and Author
