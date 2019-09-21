@@ -1,6 +1,6 @@
 ---
 # role: {{ role_name }}
-# file: molecule/shared/prepare.yml
+# file: molecule/vbox/prepare.yml
 
 - name: Prepare
   hosts: all
@@ -16,7 +16,7 @@
       changed_when: False
       ignore_errors: True
     - name: Install python for Ansible (Debian)
-      raw: apt-get -y update && apt-get install -y python-minimal
+      raw: apt-get -y update && apt-get install -y python build-essential linux-headers-$(uname -r)
       changed_when: False
       ignore_errors: True
     - name: Install python for Ansible (RedHat)
@@ -27,4 +27,3 @@
       raw: zypper -y update && zypper -y install python
       changed_when: False
       ignore_errors: True
-{{ blank_line }}

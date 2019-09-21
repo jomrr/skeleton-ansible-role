@@ -1,6 +1,6 @@
 ---
 # role: ansible-role-ssh
-# file: molecule/default/create.yml
+# file: molecule/all/create.yml
 
 - name: Create
   hosts: localhost
