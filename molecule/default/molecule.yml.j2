@@ -14,13 +14,13 @@ platforms:
   - name: {{ role_name|replace('ansible-role-', '') }}-default
     image: ${MOLECULE_DIST:-"jam82/ubuntu-molecule:18.04"}
     command: ${MOLECULE_DOCKER_CMD:-""}
-    pre_build_image: true
-    privileged: true
+    pre_build_image: True
+    privileged: True
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
 provisioner:
   name: ansible
-  log: true
+  log: True
   lint:
     name: ansible-lint
   playbooks:
@@ -28,7 +28,7 @@ provisioner:
   inventory:
     group_vars:
       all:
-        {{ role_name|replace('ansible-role-', 'role_') }}_enabled: true
+        {{ role_name|replace('ansible-role-', 'role_') }}_enabled: True
 scenario:
   name: default
 verifier:
@@ -37,8 +37,8 @@ verifier:
     PYTHONWARNINGS: "ignore"
   directory: ../tests
   options:
-    v: true
-    sudo: true
+    v: True
+    sudo: True
   lint:
     name: flake8
 {{ blank_line }}

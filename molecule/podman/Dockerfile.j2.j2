@@ -1,0 +1,47 @@
+# Molecule managed                                                                
+{% raw %}                                                                                  
+{% if item.registry is defined %}                                                 
+FROM {{ item.registry.url }}/{{ item.image }}                                     
+{% else %}                                                                        
+FROM {{ item.image }}                                                             
+{% endif %}                                                                       
+
+ENV container docker
+
+# Alpine
+RUN if [ $(command -v apk) ]; then \
+    apk update && \
+    apk add --no-cache bash ca-certificates grep python sudo wget; fi
+
+# Archlinux
+RUN if [ $(command -v pacman) ]; then \
+    pacman --sync --noconfirm --refresh bash grep python sudo wget; fi
+
+# Debian
+RUN if [ $(command -v apt-get) ]; then \
+    apt-get update && \
+    apt-get install -y bash ca-certificates python sudo wget && \
+    apt-get clean; fi
+
+# Fedora
+RUN if [ $(command -v dnf) ]; then \
+    dnf makecache && \
+    dnf --assumeyes install bash python python-devel python*-dnf sudo wget && \
+    dnf clean all; fi
+
+# Gentoo
+RUN if [ $(command -v emerge) ]; then \
+    emerge --ask n =dev-lang/python-2\* gentoolkit; fi
+
+# RedHat/CentOS
+RUN if [ $(command -v yum) ]; then \
+    yum makecache fast && \
+    yum install -y bash python sudo yum-plugin-ovl wget && \
+    sed -i 's/plugins=0/plugins=1/g' /etc/yum.conf && yum clean all; fi
+
+# SuSE
+RUN if [ $(command -v zypper) ]; then \
+    zypper refresh && \
+    zypper install -y bash python python-xml sudo wget && \
+    zypper clean -a; fi
+{%- endraw %}

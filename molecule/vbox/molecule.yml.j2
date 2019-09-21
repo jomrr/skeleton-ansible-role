@@ -13,7 +13,7 @@ driver:
       gui: True
       memory: 1024
       cpus: 1
-      provision: true
+      provision: True
 lint:
   name: yamllint
   options:
@@ -29,7 +29,7 @@ platforms:
     box: "ubuntu/bionic64"
 provisioner:
   name: ansible
-  log: true
+  log: True
   lint:
     name: ansible-lint
   playbooks:
@@ -38,7 +38,7 @@ provisioner:
   inventory:
     group_vars:
       all:
-        {{ role_name|replace('ansible-role-', 'role_') }}_enabled: true
+        {{ role_name|replace('ansible-role-', 'role_') }}_enabled: True
 scenario:
   name: vbox
 verifier:
@@ -47,8 +47,8 @@ verifier:
     PYTHONWARNINGS: "ignore"
   directory: ../tests
   options:
-    v: true
-    sudo: true
+    v: True
+    sudo: True
   lint:
     name: flake8
 {{ blank_line }}

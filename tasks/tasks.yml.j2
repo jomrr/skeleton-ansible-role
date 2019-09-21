@@ -15,4 +15,12 @@
       skip: true
   loop_control:
     loop_var: vars_file
+
+- name: Install packages for {% endraw %}{{ role_name }}{% raw %}
+  package:
+    name: "{{ {% endraw %}{{ role_name | replace('ansible-role-', '') | replace('-','_') }}{% raw %}_package }}"
+    state: present
+  loop: "{{ {% endraw %}{{ role_name | replace('ansible-role-', '') | replace('-','_') }}{% raw %}_packages }}"
+  loop_control:
+    loop_var: {% endraw %}{{ role_name | replace('ansible-role-', '') | replace('-','_') }}{% raw %}_package
 {% endraw %}
