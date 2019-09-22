@@ -19,13 +19,13 @@ lint:
   options:
     config-file: molecule/shared/yamllint.yml
 platforms:
-  - name: {{ role_name|replace('ansible-role-', '') }}-arch
+  - name: {{ role_name | replace('ansible-role-', '') }}-arch
     box: "archlinux/archlinux"
-  - name: {{ role_name|replace('ansible-role-', '') }}-centos7
+  - name: {{ role_name | replace('ansible-role-', '') }}-centos7
     box: "centos/7"
-  - name: {{ role_name|replace('ansible-role-', '') }}-debian10
+  - name: {{ role_name | replace('ansible-role-', '') }}-debian10
     box: "debian/buster64"
-  - name: {{ role_name|replace('ansible-role-', '') }}-ubuntu1804
+  - name: {{ role_name | replace('ansible-role-', '') }}-ubuntu1804
     box: "ubuntu/bionic64"
 provisioner:
   name: ansible
@@ -38,7 +38,7 @@ provisioner:
   inventory:
     group_vars:
       all:
-        {{ role_name|replace('ansible-role-', 'role_') }}_enabled: True
+        {{ role_name | replace('ansible-role-', 'role_') }}_enabled: True
 scenario:
   name: vbox
 verifier:
