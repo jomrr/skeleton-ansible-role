@@ -1,0 +1,38 @@
+---
+# role: {{ role_name }}
+# file: meta/main.yml
+
+galaxy_info:
+  role_name: {{ role_name }}
+  author: Jonas Mauer
+  description: Ansible role for setting up {{ role_name|replace('ansible-role-', '') }}.
+  company: ''
+
+  # If the issue tracker for your role is not on github, uncomment the
+  # next line and provide a value
+  # issue_tracker_url: http://example.com/issue/tracker
+
+  license: MIT
+
+  min_ansible_version: 2.7
+
+  # If this a Container Enabled role, provide the minimum Ansible Container version.
+  # min_ansible_container_version:
+
+  github_branch: master
+
+  # platforms is a list of platforms, and each platform has a name and a list of versions.
+  #
+  platforms:
+    - name: Ubuntu
+      versions:
+        - 16
+        - 18
+    - name: CentOS
+      versions:
+        - 7
+        - 8
+
+  galaxy_tags: []
+
+  dependencies: []
