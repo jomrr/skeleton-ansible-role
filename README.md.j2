@@ -29,7 +29,7 @@ None.
 # role: {{ role_name }}
 # file: site.yml
 
-- hosts: {{ role_name|replace('ansible-role-', '') }}-servers
+- hosts: {{ role_name|replace('ansible-role-', '') }}_servers
   roles:
     - role: {{ role_name }}
 ```
