@@ -16,7 +16,7 @@ Variables for this
 
 | variable | default value in defaults/main.yml | description |
 | -------- | ---------------------------------- | ----------- |
-| {{ role_name|replace('ansible-role-', 'role_') }}_enabled | false | determine whether role is enabled (true) or not (false) |
+| {{ role_name | replace('ansible-role-', 'role_') | replace('-','_') }}_enabled | false | determine whether role is enabled (true) or not (false) |
 
 ## Dependencies
 
@@ -29,7 +29,10 @@ None.
 # role: {{ role_name }}
 # file: site.yml
 
-- hosts: {{ role_name|replace('ansible-role-', '') }}_servers
+- hosts: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_systems
+  become: True
+  vars:
+    {{ role_name | replace('ansible-role-', 'role_') | replace('-','_') }}_enabled: True
   roles:
     - role: {{ role_name }}
 ```
