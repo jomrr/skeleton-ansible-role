@@ -27,6 +27,7 @@ provisioner:
   lint:
     name: ansible-lint
   playbooks:
+    prepare: ../shared/prepare.yml
     converge: ../shared/playbook.yml
   inventory:
     group_vars:

@@ -7,24 +7,29 @@
   become: True
   gather_facts: False
   tasks:
-    - name: Install python for Ansible (Alpine)
-      raw: apk add -y python
+    - name: Install python for Ansible (apt)
+      raw: apt-get -y update && \
+        apt-get install -y python && \
+        apt-get install -y build-essential linux-headers-$(uname -r) && \
+        apt-get install -y virtualbox-guest-utils virtualbox-guest-dkms
       changed_when: False
       ignore_errors: True
-    - name: Install python for Ansible (Archlinux)
-      raw: pacman --noconfirm -S python
+    - name: Install python for Ansible (dnf)
+      raw: dnf -y upgrade && dnf -y install python
       changed_when: False
       ignore_errors: True
-    - name: Install python for Ansible (Debian)
-      raw: apt-get -y update && apt-get install -y python build-essential linux-headers-$(uname -r)
+    - name: Install python for Ansible (pacman)
+      raw: pacman -Sy && pacman --noconfirm -S python linux-lts-headers && \
+        pacman --noconfirm -S virtualbox-guest-modules-arch virtualbox-guest-utils-nox
       changed_when: False
       ignore_errors: True
-    - name: Install python for Ansible (RedHat)
-      raw: yum -y update && yum -y install python
+    - name: Install python for Ansible (yum)
+      raw: yum -y update && yum -y install python epel-release && \
+        yum -y update && yum -y install make gcc kernel-headers kernel-devel perl dkms bzip2
       changed_when: False
       ignore_errors: True
-    - name: Install python for Ansible (Suse)
-      raw: zypper -y update && zypper -y install python
+    - name: Install python for Ansible (zypper)
+      raw: zypper -y update && zypper -y install python && zypper -y install virtualbox-guest-tools
       changed_when: False
       ignore_errors: True
 {{ blank_line }}
