@@ -9,11 +9,6 @@ driver:
   provider:
     name: virtualbox
     type: virtualbox
-    options:
-      gui: True
-      memory: 1024
-      cpus: 1
-      provision: True
 lint:
   name: yamllint
   options:
@@ -21,12 +16,20 @@ lint:
 platforms:
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-arch
     box: "archlinux/archlinux"
+    cpus: 2
+    memory: 1024
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-centos8
     box: "centos/8"
+    cpus: 2
+    memory: 1024
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-debian10
     box: "debian/buster64"
+    cpus: 2
+    memory: 1024
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-ubuntu1804
     box: "ubuntu/bionic64"
+    cpus: 2
+    memory: 1024
 provisioner:
   name: ansible
   log: True
