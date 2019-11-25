@@ -1,5 +1,5 @@
 ---
-# role: ansible-role-vscode
+# role: {{ role_name }}
 # file: molecule/shared/prepare.yml
 
 - name: Prepare
@@ -34,6 +34,12 @@
         state: present
         update_cache: yes
       when: ansible_pkg_mgr == 'yum'
+
+    - name: Install EPEL
+      yum:
+        name: epel-release
+        state: present
+      when: ansible_os_family == 'RedHat'
 
     - name: Update zypper cache
       zypper:
