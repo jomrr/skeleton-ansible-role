@@ -1,0 +1,6 @@
+---
+# role: {{ role_name }}
+# file: vars/Alpine.yml
+
+{{ role_name | replace('ansible-role-', '') | replace('-','_') }}_packages: []
+{{ blank_line }}
