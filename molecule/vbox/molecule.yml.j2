@@ -14,27 +14,27 @@ lint:
   options:
     config-file: molecule/shared/yamllint.yml
 platforms:
-  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-alpine310
+  - name: {{ role_name | replace('ansible-role-', '') }}-alpine310
     box: "generic/alpine310"
     cpus: 2
     memory: 1024
-  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-arch
+  - name: {{ role_name | replace('ansible-role-', '') }}-arch
     box: "archlinux/archlinux"
     cpus: 2
     memory: 1024
-  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-centos8
+  - name: {{ role_name | replace('ansible-role-', '') }}-centos8
     box: "centos/8"
     cpus: 2
     memory: 1024
-  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-debian10
+  - name: {{ role_name | replace('ansible-role-', '') }}-debian10
     box: "debian/buster64"
     cpus: 2
     memory: 1024
-  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-fedora31
+  - name: {{ role_name | replace('ansible-role-', '') }}-fedora31
     box: "fedora/31-cloud-base"
     cpus: 2
     memory: 1024
-  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-ubuntu1804
+  - name: {{ role_name | replace('ansible-role-', '') }}-ubuntu1804
     box: "ubuntu/bionic64"
     cpus: 2
     memory: 1024

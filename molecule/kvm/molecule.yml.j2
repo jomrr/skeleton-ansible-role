@@ -17,13 +17,13 @@ lint:
   options:
     config-file: molecule/shared/yamllint.yml
 platforms:
-  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-arch
+  - name: {{ role_name | replace('ansible-role-', '') }}-arch
     box: "archlinux/archlinux"
-  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-centos8
+  - name: {{ role_name | replace('ansible-role-', '') }}-centos8
     box: "centos/8"
-  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-debian10
+  - name: {{ role_name | replace('ansible-role-', '') }}-debian10
     box: "debian/buster64"
-  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-ubuntu1804
+  - name: {{ role_name | replace('ansible-role-', '') }}-ubuntu1804
     box: "generic/ubuntu1804"
 provisioner:
   name: ansible

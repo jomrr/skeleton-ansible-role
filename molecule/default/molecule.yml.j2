@@ -11,7 +11,7 @@ lint:
   options:
     config-file: molecule/shared/yamllint.yml
 platforms:
-  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-default
+  - name: {{ role_name | replace('ansible-role-', '') }}-default
     image: ${MOLECULE_DIST:-"jam82/ubuntu-molecule:18.04"}
     command: ${MOLECULE_DOCKER_CMD:-""}
     pre_build_image: True

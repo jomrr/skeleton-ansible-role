@@ -16,7 +16,7 @@
       changed_when: False
       ignore_errors: True
     - name: Install python for Ansible (dnf)
-      raw: dnf -y update && dnf -y install python3
+      raw: dnf -y makecache && dnf -y install python3
       changed_when: False
       ignore_errors: True
     - name: Install python for Ansible (pacman)
@@ -24,7 +24,7 @@
       changed_when: False
       ignore_errors: True
     - name: Install python for Ansible (yum)
-      raw: yum -y update && yum -y install python3
+      raw: yum -y makecache && yum -y install python3
       changed_when: False
       ignore_errors: True
     - name: Install python for Ansible (zypper)
