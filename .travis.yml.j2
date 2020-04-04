@@ -1,4 +1,5 @@
 ---
+# role: {{ role_name }}
 # file: .travis.yml
 
 language: python
@@ -25,7 +26,7 @@ env:
     - MOLECULE_DIST: 'jam82/ubuntu-molecule:18.04'
 
 install:
-  - pip install testinfra flake8 molecule docker
+  - pip install ansible-lint docker flake8 molecule testinfra yamllint
 
 script:
   - molecule --version

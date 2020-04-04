@@ -1,6 +1,7 @@
 ---
 # role: {{ role_name }}
 # file: molecule/kvm/molecule.yml
+
 dependency:
   name: galaxy
 driver:
@@ -9,7 +10,7 @@ driver:
     name: libvirt
     type: libvirt
     options:
-      memory: 4096
+      memory: 2048
       cpus: 2
 lint: |
   set -e
