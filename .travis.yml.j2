@@ -25,7 +25,7 @@ env:
     - MOLECULE_DIST: 'jam82/ubuntu-molecule:18.04'
 
 install:
-  - pip install testinfra molecule docker
+  - pip install testinfra flake8 molecule docker
 
 script:
   - molecule --version

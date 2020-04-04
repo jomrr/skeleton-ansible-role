@@ -1,7 +1,6 @@
 ---
 # role: {{ role_name }}
 # file: molecule/kvm/molecule.yml
-
 dependency:
   name: galaxy
 driver:
@@ -10,12 +9,13 @@ driver:
     name: libvirt
     type: libvirt
     options:
-      memory: 1024
+      memory: 4096
       cpus: 2
-lint:
-  name: yamllint
-  options:
-    config-file: molecule/shared/yamllint.yml
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
 platforms:
   - name: {{ role_name | replace('ansible-role-', '') }}-arch
     box: "archlinux/archlinux"
@@ -23,30 +23,26 @@ platforms:
     box: "centos/8"
   - name: {{ role_name | replace('ansible-role-', '') }}-debian10
     box: "debian/buster64"
+  - name: {{ role_name | replace('ansible-role-', '') }}-fedora31
+    box: "fedora/31-cloud-base"
   - name: {{ role_name | replace('ansible-role-', '') }}-ubuntu1804
     box: "generic/ubuntu1804"
 provisioner:
   name: ansible
   log: True
-  lint:
-    name: ansible-lint
   playbooks:
-    prepare: prepare.yml
-    converge: ../shared/playbook.yml
+    prepare: ../resources/playbooks/prepare.yml
+    converge: ../resources/playbooks/converge.yml
   inventory:
     group_vars:
       all:
         {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_enabled: True
-scenario:
-  name: kvm
 verifier:
   name: testinfra
   env:
     PYTHONWARNINGS: "ignore"
-  directory: ../tests
+  directory: ../resources/tests
   options:
     v: True
     sudo: True
-  lint:
-    name: flake8
 {{ blank_line }}

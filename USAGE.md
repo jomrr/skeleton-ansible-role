@@ -4,22 +4,16 @@ Skeleton for use with ansible-galaxy to create a new ansible role.
 
 ## Requirements
 
-Ansible 2.5 or higher is required.
+Ansible 2.8 or higher is required.
 
 For running the default tests with molecule docker you need the following packages installed:
 
 * docker
-* molecule
-* molecule[docker]
 
 To use the predefined tests with kvm/libvirt you need to have the following packages installed:
 
 * qemu
 * virt-manager
-* molecule
-* molecule[vagrant]
-* molecule[vagrant]
-* molecule[libvirt]
 * [vagrant](http://vagrantup.com)
 * vagrant-libvirt
 
@@ -30,9 +24,7 @@ To install os specific requirements please search the internet.
 For molecule do the following:
 
 ```shell
-pip install --user 'molecule'
-pip install --user 'molecule[vagrant]'
-pip install --user 'molecule[libvirt]'
+pip install --user molecule molecule-vagrant testinfra flake8
 ```
 
 For the vagrant-libvirt plugin you need the libvirt-dev package of your os installed.
@@ -54,8 +46,8 @@ ansible-galaxy init --role-skeleton=ansible-role-skeleton ansible-role-<rolename
 
 ## License and Author
 
-- Author:: Jonas Mauer (<jam@kabelmail.net>)
-- Copyright:: 2019, Jonas Mauer
+* Author:: Jonas Mauer (<jam@kabelmail.net>)
+* Copyright:: 2019, Jonas Mauer
 
 Licensed under MIT License;
 See LICENSE file in repository.

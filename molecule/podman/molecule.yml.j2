@@ -6,16 +6,17 @@ dependency:
   name: galaxy
 driver:
   name: podman
-lint:
-  name: yamllint
-  options:
-    config-file: molecule/shared/yamllint.yml
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
 platforms:
   - name: {{ role_name | replace('ansible-role-', '') }}-default
     image: ${MOLECULE_DIST:-"jam82/ubuntu-molecule:18.04"}
     command: ${MOLECULE_DOCKER_CMD:-""}
     pre_build_image: True
-    tty: True
+    tty: False
     tmpfs:
       - /tmp
       - /run
@@ -24,25 +25,19 @@ platforms:
 provisioner:
   name: ansible
   log: True
-  lint:
-    name: ansible-lint
   playbooks:
-    prepare: ../shared/prepare.yml
-    converge: ../shared/playbook.yml
+    prepare: ../resources/playbooks/prepare.yml
+    converge: ../resources/playbooks/converge.yml
   inventory:
     group_vars:
       all:
         {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_enabled: True
-scenario:
-  name: podman
 verifier:
   name: testinfra
   env:
     PYTHONWARNINGS: "ignore"
-  directory: ../tests
+  directory: ../resources/tests
   options:
     v: True
     sudo: True
-  lint:
-    name: flake8
 {{ blank_line }}
