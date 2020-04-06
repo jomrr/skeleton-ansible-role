@@ -12,8 +12,22 @@ lint: |
   ansible-lint
   flake8
 platforms:
-  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-amazon
-    image: "jam82/amazon-molecule:latest"
+  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-alpine311
+    image: "jam82/molecule-alpine:3.11"
+    pre_build_image: True
+    privileged: True
+    tmpfs:
+      - /tmp
+      - /run
+  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-alpine
+    image: "jam82/molecule-alpine:latest"
+    pre_build_image: True
+    privileged: True
+    tmpfs:
+      - /tmp
+      - /run
+  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-amazonlinux
+    image: "jam82/molecule-amazonlinux:latest"
     pre_build_image: True
     privileged: True
     tmpfs:
@@ -22,7 +36,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-arch
-    image: "jam82/arch-molecule:latest"
+    image: "jam82/molecule-arch:latest"
     pre_build_image: True
     privileged: True
     tmpfs:
@@ -30,8 +44,15 @@ platforms:
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-centos6
+    image: "jam82/molecule-centos:6"
+    pre_build_image: True
+    privileged: True
+    tmpfs:
+      - /tmp
+      - /run
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-centos7
-    image: "jam82/centos-molecule:7"
+    image: "jam82/molecule-centos:7"
     pre_build_image: True
     privileged: True
     tmpfs:
@@ -40,7 +61,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-centos8
-    image: "jam82/centos-molecule:8"
+    image: "jam82/molecule-centos:8"
     pre_build_image: True
     privileged: True
     tmpfs:
@@ -49,7 +70,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-debian9
-    image: "jam82/debian-molecule:9"
+    image: "jam82/molecule-debian:9"
     pre_build_image: True
     privileged: True
     tmpfs:
@@ -58,7 +79,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-debian10
-    image: "jam82/debian-molecule:10"
+    image: "jam82/molecule-debian:10"
     pre_build_image: True
     privileged: True
     tmpfs:
@@ -67,7 +88,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-debian
-    image: "jam82/debian-molecule:latest"
+    image: "jam82/molecule-debian:latest"
     pre_build_image: True
     privileged: True
     tmpfs:
@@ -75,8 +96,8 @@ platforms:
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-suse15
-    image: "jam82/suse-molecule:15"
+  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-opensuse15
+    image: "jam82/molecule-opensuse:15"
     pre_build_image: True
     privileged: True
     tmpfs:
@@ -84,8 +105,8 @@ platforms:
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-suse
-    image: "jam82/suse-molecule:latest"
+  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-opensuse
+    image: "jam82/molecule-opensuse:latest"
     pre_build_image: True
     privileged: True
     tmpfs:
@@ -93,8 +114,8 @@ platforms:
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-suse-tumbleweed
-    image: "jam82/suse-molecule:tumbleweed"
+  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-opensuse-tumbleweed
+    image: "jam82/molecule-opensuse:tumbleweed"
     pre_build_image: True
     privileged: True
     tmpfs:
@@ -102,8 +123,15 @@ platforms:
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-oracle7
-    image: "jam82/oracle-molecule:7"
+  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-oraclelinux6
+    image: "jam82/molecule-oraclelinux:6"
+    pre_build_image: True
+    privileged: True
+    tmpfs:
+      - /tmp
+      - /run
+  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-oraclelinux7
+    image: "jam82/molecule-oraclelinux:7"
     pre_build_image: True
     privileged: True
     tmpfs:
@@ -111,8 +139,8 @@ platforms:
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-oracle8
-    image: "jam82/oracle-molecule:8"
+  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-oraclelinux8
+    image: "jam82/molecule-oraclelinux:8"
     pre_build_image: True
     privileged: True
     tmpfs:
@@ -120,8 +148,8 @@ platforms:
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-oracle
-    image: "jam82/oracle-molecule:latest"
+  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-oraclelinux
+    image: "jam82/molecule-oraclelinux:latest"
     pre_build_image: True
     privileged: True
     tmpfs:
@@ -130,7 +158,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-ubuntu1604
-    image: "jam82/ubuntu-molecule:16.04"
+    image: "jam82/molecule-ubuntu:16.04"
     pre_build_image: True
     privileged: True
     tmpfs:
@@ -139,7 +167,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-ubuntu1804
-    image: "jam82/ubuntu-molecule:18.04"
+    image: "jam82/molecule-ubuntu:18.04"
     pre_build_image: True
     privileged: True
     tmpfs:
@@ -148,7 +176,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-ubuntu
-    image: "jam82/ubuntu-molecule:latest"
+    image: "jam82/molecule-ubuntu:latest"
     pre_build_image: True
     privileged: True
     tmpfs:
