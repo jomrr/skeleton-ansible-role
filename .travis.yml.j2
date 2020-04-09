@@ -12,18 +12,19 @@ services: docker
 
 env:
   matrix:
-    - MOLECULE_DIST: 'jam82/amazon-molecule:latest'
-    - MOLECULE_DIST: 'jam82/arch-molecule:latest'
-    - MOLECULE_DIST: 'jam82/centos-molecule:7'
-    - MOLECULE_DIST: 'jam82/centos-molecule:8'
-    - MOLECULE_DIST: 'jam82/debian-molecule:9'
-    - MOLECULE_DIST: 'jam82/debian-molecule:10'
-    - MOLECULE_DIST: 'jam82/suse-molecule:15'
-    - MOLECULE_DIST: 'jam82/suse-molecule:tumbleweed'
-    - MOLECULE_DIST: 'jam82/oracle-molecule:7'
-    - MOLECULE_DIST: 'jam82/oracle-molecule:8'
-    - MOLECULE_DIST: 'jam82/ubuntu-molecule:16.04'
-    - MOLECULE_DIST: 'jam82/ubuntu-molecule:18.04'
+    - MOLECULE_DIST: 'jam82/molecule-alpine:latest'
+    - MOLECULE_DIST: 'jam82/molecule-amazon:latest'
+    - MOLECULE_DIST: 'jam82/molecule-arch:latest'
+    - MOLECULE_DIST: 'jam82/molecule-centos:7'
+    - MOLECULE_DIST: 'jam82/molecule-centos:8'
+    - MOLECULE_DIST: 'jam82/molecule-debian:9'
+    - MOLECULE_DIST: 'jam82/molecule-debian:10'
+    - MOLECULE_DIST: 'jam82/molecule-suse:15'
+    - MOLECULE_DIST: 'jam82/molecule-suse:tumbleweed'
+    - MOLECULE_DIST: 'jam82/molecule-oracle:7'
+    - MOLECULE_DIST: 'jam82/molecule-oracle:8'
+    - MOLECULE_DIST: 'jam82/molecule-ubuntu:18.04'
+    - MOLECULE_DIST: 'jam82/molecule-ubuntu:20.04'
 
 install:
   - pip install ansible-lint docker flake8 molecule testinfra yamllint
