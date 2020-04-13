@@ -10,51 +10,22 @@
     epel_enabled: True
     upgrade_enabled: False
   tasks:
-    # this is done to save time firing all commands
+    # this is done to save time, just fire all commands
     - name: Set fact for os-specific bootstrapping
       set_fact:
         bootstrap:
-          - { id: 'Alpine', cmd: 'apk add --no-cache bash sudo python' }
-          - { id: 'Arch', cmd: 'pacman -Sy && pacman --noconfirm -S bash sudo python' }
-          - { id: 'Centos', cmd: 'yum -y makecache && yum -y install bash sudo python' }
-          - { id: 'Debian', cmd: 'apt-get -y update && apt-get install -y bash sudo python python-apt' }
-          - { id: 'Fedora', cmd: 'dnf makecache && dnf -y install bash sudo python' }
-          - { id: 'Redhat', cmd: 'yum -y makecache && yum -y install bash sudo python' }
-          - { id: 'Suse', cmd: 'zypper -n update && zypper -n install bash sudo python python-xml' }
-          - { id: 'Ubuntu', cmd: 'apt-get -y update && apt-get install -y bash sudo python python-apt' }
+          - 'apk add --no-cache bash sudo python3 vim'
+          - 'apt-get -y update && apt-get install -y bash sudo python3 python3-apt vim'
+          - 'dnf makecache && dnf -y install bash sudo python3 vim'
+          - 'pacman -Sy && pacman --noconfirm -S bash sudo python3 vim'
+          - 'yum -y makecache && yum -y install bash sudo python3 vim'
+          - 'zypper -n update && zypper -n install bash sudo python python-xml python3 python3-xml vim'
 
-    # some images do not have /etc/os-release, so ignore_errors
-    # get os-release info to bootstrap systems for ansible by installing python
-    - name: Check os-release for ID
-      shell: grep "ID=" /etc/os-release | grep -v "_ID" || echo -n "ID=Na"
-      changed_when: False
-      register: osrelease_id
-
-    - name: Check os-release for ID_LIKE
-      shell: grep "ID_LIKE=" /etc/os-release | grep -v "_ID" || echo -n "ID_LIKE=Na"
-      changed_when: False
-      register: osrelease_id_like
-
-    # create dict osrelease as { id: ubuntu, id_like: debian }
-    - name: Set fact osrelease
-      set_fact:
-        osrelease: "{{ osrelease | default( {} ) | combine( { item[0]: item[1] | title } ) }}"
-      loop:
-        - "{{ osrelease_id.stdout.split('=') | lower | default('ID=Na', True) }}"
-        - "{{ osrelease_id_like.stdout.split('=') | lower | default('ID_LIKE=Na', True) }}"
-
-    # bootstrap machine for ansible
-    - name: Bootstrap machine for ansible
-      raw: "{{ item.cmd }}"
-      loop: "{{ bootstrap }}"
-      when: osrelease.id == item.id and not osrelease.id == 'Na'
-
-    # some images do not have /etc/os-release
+    # bootstrap machines for ansible with bash, sudo, python and vim
     - name: Bootstrap machine for ansible (ignore_errors)
-      raw: "{{ item.cmd }}"
+      raw: "{{ item }}"
       loop: "{{ bootstrap }}"
       ignore_errors: yes
-      when: osrelease.id == 'Na'
 
     # gather facts
     - name: Gather facts
