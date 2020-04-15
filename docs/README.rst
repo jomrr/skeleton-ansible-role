@@ -2,6 +2,9 @@
 ansible-role-skeleton
 #####################
 
+Ok, lets call githubs rst rendering features somewhat "reduced".
+I will rewrite this to markdown after work today...
+
 `Molecule <https://molecule.readthedocs.io/en/latest/>`_-based role skeleton for use with ansible-galaxy to create a new ansible role.
 
 ************
