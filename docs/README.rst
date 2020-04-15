@@ -31,7 +31,6 @@ just run the following commands:
 .. warning:: Check the script before you run it and use on your own risk.
 
 .. code-block:: shell
-    :linenos:
 
     curl -fsSL https://get.docker.com -o get-docker.sh
     sudo sh get-docker.sh
