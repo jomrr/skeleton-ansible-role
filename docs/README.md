@@ -34,6 +34,10 @@ Table of Contents
 
 ![Comment](comment.png)
 
+.caption[
+**Fig. 1:** Code Example for a newly generated role ansible-role-foreman
+]
+
 ## Quickstart
 
 ```shell
