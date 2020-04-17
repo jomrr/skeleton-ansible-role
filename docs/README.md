@@ -19,7 +19,7 @@ The role skeleton will enable your role to
 - have a predefined README.md skeleton
 - use consistent comments in each `yml`-file
 
-![Comment](docs/comment.png)
+![Comment](comment.png)
 
 ## Quickstart
 
