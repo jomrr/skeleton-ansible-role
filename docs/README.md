@@ -6,9 +6,10 @@ This README does not explain how to use molecule. Please read the [docs](https:/
 
 The role skeleton will enable your role to
 
+- (de)activate your role via an `{{role_name}}_enabled`-variable, see `defaults/main.yml`
 - include os specific variables
-  - first a `vars/{{ansible_os_family}}.yml` is included, automatically created by this skeleton
-  - then the first found of the following, if you create them
+  - first a `vars/{{ansible_os_family}}.yml` is included, automatically created when using this skeleton (e.g. `RedHat.yml` or `Archlinux.yml`)
+  - then the first found of the following, if you create them (e.g. `Fedora-31.yml`)
     - `vars/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml`
     - `vars/{{ ansible_distribution }}.yml`
     - `vars/{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml`
@@ -17,6 +18,8 @@ The role skeleton will enable your role to
 - use predefined containers for testing, see [buildah-molecule-images](https://github.com/jam82/buildah-molecule-images)
 - have a predefined README.md skeleton
 - use consistent comments in each `yml`-file
+
+![Comment](docs/comment.png)
 
 ## Quickstart
 
