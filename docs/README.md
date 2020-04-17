@@ -16,7 +16,7 @@ The role skeleton will enable your role to
 - use a predefined travis file
 - use predefined containers for testing, see [buildah-molecule-images](https://github.com/jam82/buildah-molecule-images)
 - have a predefined README.md skeleton
-- use consistent comments within the single files
+- use consistent comments in each `yml`-file
 
 ## Quickstart
 
