@@ -33,10 +33,7 @@ Table of Contents
 - use consistent comments in each `yml`-file
 
 ![Comment](comment.png)
-
-.caption[
-**Fig. 1:** Code Example for a newly generated role ansible-role-foreman
-]
+**Fig. 1:** Code Example of a newly generated role skeleton for `ansible-role-foreman`
 
 ## Quickstart
 
