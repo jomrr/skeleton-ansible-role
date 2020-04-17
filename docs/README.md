@@ -127,7 +127,7 @@ aga-init() {
         return 1
     fi
     ansible-galaxy init --role-skeleton=${2:-'./ansible-role-skeleton'} ansible-role-$1
-    rm ./ansible-role-$1/docs/README.md
+    rm ./ansible-role-$1/docs/*
 }
 ```
 
