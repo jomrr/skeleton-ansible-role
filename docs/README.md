@@ -86,7 +86,7 @@ git clone https://github.com/jam82/ansible-role-skeleton.git
 ansible-galaxy init --role-skeleton=ansible-role-skeleton ansible-role-<rolename>
 ```
 
-If you want to use it in a more convenient way, create a custom function in, i.e. in ~/.bashrc
+If you want to use it in a more convenient way, create a custom function e.g. in ~/.bashrc
 
 ```shell
 # ansible-galaxy init with custom role-skeleton
