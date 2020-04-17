@@ -42,7 +42,9 @@ sudo sh get-docker.sh
 sudo usermod -aG docker <your-username>
 ```
 
-> **Warning:** Adding an unprivileged user to the docker group can be a security risk. If you want to avoid that risk, see [Rootless-mode](https://docs.docker.com/engine/security/rootless/)
+> **Warning:** 
+> Adding an unprivileged user to the docker group can be a security risk. 
+> If you want to avoid that risk, see [Rootless-mode](https://docs.docker.com/engine/security/rootless/)
 
 The script is an official script provided by docker and to use docker as an unprivileged user, you have to add your user to the docker group.
 
