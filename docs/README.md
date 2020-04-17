@@ -2,9 +2,22 @@
 
 [Molecule](https://molecule.readthedocs.io/en/latest/)-based role skeleton for use with ansible-galaxy to create a new ansible role.
 
-This README does not explain how to use molecule. Please read the [docs](https://molecule.readthedocs.io/en/latest/) if you need to.
+> This README does not explain how to use molecule. Please read the [docs](https://molecule.readthedocs.io/en/latest/) if you need to.
 
-The role skeleton will enable your role to
+Table of Contents
+
+- [ansible-role-skeleton](#ansible-role-skeleton)
+  - [Features](#features)
+  - [Quickstart](#quickstart)
+  - [Requirements](#requirements)
+    - [Docker Scenario (default)](#docker-scenario-default)
+    - [Libvirt Scenario (kvm)](#libvirt-scenario-kvm)
+    - [Podman Scenario (podman)](#podman-scenario-podman)
+    - [VirtualBox Scenario (vbox)](#virtualbox-scenario-vbox)
+  - [Usage](#usage)
+  - [Author and License](#author-and-license)
+
+## Features
 
 - (de)activate your role via an `{{role_name}}_enabled`-variable, see `defaults/main.yml`
 - include os specific variables
@@ -43,7 +56,7 @@ Then you can install the required python3 modules for all scenarios as an unpriv
 pip3 install --user ansible-lint docker flake8 molecule molecule-vagrant testinfra yamllint
 ```
 
-## Docker Scenario (default)
+### Docker Scenario (default)
 
 For running the default tests with molecule docker you just need to [install docker](https://docs.docker.com/engine/install/).
 
@@ -65,7 +78,7 @@ sudo usermod -aG docker <your-username>
 
 The script is an official script provided by docker and to use docker as an unprivileged user, you have to add your user to the docker group.
 
-## Libvirt Scenario (kvm)
+### Libvirt Scenario (kvm)
 
 To use the predefined tests with kvm/libvirt you need to have the following packages installed:
 
@@ -84,13 +97,13 @@ You can install it with:
 vagrant plugin install vagrant-libvirt
 ```
 
-## Podman Scenario (podman)
+### Podman Scenario (podman)
 
 [Podman](https://podman.io) should work out of the box, after it is installed.
 
 To install it, see the [official instructions](https://podman.io/getting-started/installation.html) or you can also use my [ansible-role-podman](https://github.com/jam82/ansible-role-podman).
 
-## VirtualBox Scenario (vbox)
+### VirtualBox Scenario (vbox)
 
 For using the [VirtualBox](https://virtualbox.org) (vbox) scenario install it on your os along with [`vagrant`](https://www.vagrantup.com/downloads.html) and the [`vagrant-libvirt` plugin](https://github.com/vagrant-libvirt/vagrant-libvirt).
 
