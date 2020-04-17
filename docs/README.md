@@ -11,7 +11,7 @@ git clone https://github.com/jam82/ansible-role-skeleton.git
 ansible-galaxy init --role-skeleton=ansible-role-skeleton ansible-role-<rolename>
 ```
 
-For a more convenient way see [Usage](#Usage).
+For a more convenient way see [Usage](#usage).
 
 ## Requirements
 
