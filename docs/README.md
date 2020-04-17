@@ -4,6 +4,20 @@
 
 This README does not explain how to use molecule. Please read the [docs](https://molecule.readthedocs.io/en/latest/) if you need to.
 
+The role skeleton will enable your role to
+
+- include os specific variables
+  - first a `vars/{{ansible_os_family}}.yml` is included, automatically created by this skeleton
+  - then the first found of the following, if you create them
+    - `vars/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml`
+    - `vars/{{ ansible_distribution }}.yml`
+    - `vars/{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml`
+- install os specific packages
+- use a predefined travis file
+- use predefined containers for testing, see [buildah-molecule-images](https://github.com/jam82/buildah-molecule-images)
+- have a predefined README.md skeleton
+- use consistent comments within the single files
+
 ## Quickstart
 
 ```shell
