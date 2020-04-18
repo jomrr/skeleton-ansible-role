@@ -26,6 +26,7 @@
       raw: "{{ item }}"
       loop: "{{ bootstrap }}"
       ignore_errors: yes
+      tags: ['skip_ansible_lint']
 
     # gather facts
     - name: Gather facts
@@ -71,6 +72,7 @@
             state: latest
             update_cache: yes
           when: ansible_pkg_mgr == "dnf"
+          tags: ['skip_ansible_lint']
 
         - name: Upgrade all packages (pacman)
           pacman:
@@ -84,6 +86,7 @@
             state: latest
             update_cache: yes
           when: ansible_pkg_mgr == 'yum'
+          tags: ['skip_ansible_lint']
 
         - name: Upgrade all packages (zypper)
           zypper:
@@ -91,5 +94,6 @@
             state: latest
             update_cache: yes
           when: ansible_pkg_mgr == 'zypper'
+          tags: ['skip_ansible_lint']
       when: upgrade_enabled | bool
 {% endraw %}
