@@ -31,7 +31,7 @@ provisioner:
   inventory:
     group_vars:
       all:
-        {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_enabled: True
+        {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled: True
 verifier:
   name: testinfra
   env:

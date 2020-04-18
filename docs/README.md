@@ -19,7 +19,7 @@ Table of Contents
 
 ## Features
 
-- (de)activate your role via an `{{role_name}}_enabled`-variable, see `defaults/main.yml`
+- (de)activate your role via an `{{role_name}}_role_enabled`-variable, see `defaults/main.yml`
 - include os specific variables
   - first a `vars/{{ansible_os_family}}.yml` is included, automatically created when using this skeleton (e.g. `RedHat.yml` or `Archlinux.yml`)
   - then the first found of the following, if you create them (e.g. `Fedora-31.yml`)
