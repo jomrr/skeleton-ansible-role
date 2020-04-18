@@ -1,6 +1,6 @@
 # ansible-role-skeleton
 
-[Molecule](https://molecule.readthedocs.io/en/latest/)-based role skeleton for use with ansible-galaxy to create a new ansible role.
+**[Molecule](https://molecule.readthedocs.io/en/latest/)-based role skeleton for use with ansible-galaxy to create a new ansible role.**
 
 > This README does not explain how to use molecule. Please read the [docs](https://molecule.readthedocs.io/en/latest/) if you need to.
 
@@ -73,7 +73,7 @@ sudo sh get-docker.sh
 sudo usermod -aG docker <your-username>
 ```
 
-> **Warning:** 
+> **Warning:**
 > Adding an unprivileged user to the docker group can be a security risk. 
 > If you want to avoid that risk, see [Rootless-mode](https://docs.docker.com/engine/security/rootless/)
 
@@ -141,8 +141,8 @@ to create a role skeleton for ansible-role-dhcpd.
 
 ## Author and License
 
-- Author:: Jonas Mauer (<jam@kabelmail.net>)
-- Copyright:: 2019, Jonas Mauer
+- Author:: [jam82](https://github.com/jam82/)
+- Copyright:: 2020, [jam82](https://github.com/jam82/)
 
 Licensed under [MIT License](http://opensource.org/licenses/mit-license.php).
 See [LICENSE](https://github.com/jam82/ansible-role-skeleton/blob/master/LICENSE) file in repository.
