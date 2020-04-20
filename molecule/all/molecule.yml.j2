@@ -38,7 +38,7 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-arch
-    image: "jam82/molecule-arch:latest"
+    image: "jam82/molecule-archlinux:latest"
     pre_build_image: True
     privileged: True
     tmpfs:
