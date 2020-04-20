@@ -177,6 +177,15 @@ platforms:
       - /run
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-ubuntu2004
+    image: "jam82/molecule-ubuntu:20.04"
+    pre_build_image: True
+    privileged: True
+    tmpfs:
+      - /tmp
+      - /run
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-ubuntu
     image: "jam82/molecule-ubuntu:latest"
     pre_build_image: True

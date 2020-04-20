@@ -41,6 +41,10 @@ platforms:
     box: "ubuntu/bionic64"
     cpus: 2
     memory: 1024
+  - name: {{ role_name | replace('ansible-role-', '') }}-ubuntu2004
+    box: "ubuntu/focal64"
+    cpus: 2
+    memory: 1024
 provisioner:
   name: ansible
   log: True
