@@ -11,11 +11,11 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 @pytest.fixture
 def get_vars(host):
     ansible_facts = host.ansible("setup")
-    ansible_distribution = ansible_facts["ansible_facts"]["ansible_distribution"]
+    ansible_dist = ansible_facts["ansible_facts"]["ansible_distribution"]
 
     defaults_files = "file=../../defaults/main.yml"
     playbook_vars = "file=../resources/playbooks/vars.yml"
-    vars_files = "file=../../vars/" + ansible_distribution + ".yml"
+    vars_files = "file=../../vars/" + ansible_dist + ".yml"
 
     ansible_vars = host.ansible(
         "include_vars", defaults_files)["ansible_facts"]
