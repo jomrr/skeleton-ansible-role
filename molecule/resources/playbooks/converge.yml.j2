@@ -5,6 +5,10 @@
 - name: Converge
   hosts: all
   become: True
+  pre_tasks:
+    - name: "Include variables to converge playbook"
+      include_vars: vars.yml
   roles:
+    - role: common
     - role: {{ role_name }}
 {{ blank_line }}

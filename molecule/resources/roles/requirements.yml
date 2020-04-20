@@ -1,0 +1,6 @@
+---
+# file: molecule/resources/roles/requirements.yml
+
+- src: https://github.com/jam82/ansible-role-common.git
+  name: common
+  version: master
