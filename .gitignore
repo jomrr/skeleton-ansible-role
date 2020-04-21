@@ -120,7 +120,7 @@ dmypy.json
 .pyre/
 
 # ---> VisualStudioCode
-.vscode/*
+.vscode
 
 # ---> Vim
 # Swap
