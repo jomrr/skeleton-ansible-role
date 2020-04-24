@@ -1,5 +1,5 @@
 ---
-# file: molecule/resources/roles/requirements.yml
+# file: requirements.yml
 
 - src: https://github.com/jam82/ansible-role-common.git
   name: common

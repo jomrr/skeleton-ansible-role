@@ -9,6 +9,8 @@
     - name: "Include variables to converge playbook"
       include_vars: vars.yml
   roles:
-    - role: common
+    # if you want to enable requirements put them in requirements.yml
+    # and add here
+    # - role: common
     - role: {{ role_name }}
 {{ blank_line }}
