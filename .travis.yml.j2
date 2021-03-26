@@ -5,8 +5,7 @@
 language: python
 
 python:
-  - "2.7"
-  - "3.6"
+  - "3.9"
 
 services: docker
 
@@ -17,9 +16,10 @@ env:
     - MOLECULE_DIST: 'jam82/molecule-archlinux:latest'
     - MOLECULE_DIST: 'jam82/molecule-centos:7'
     - MOLECULE_DIST: 'jam82/molecule-centos:8'
-    - MOLECULE_DIST: 'jam82/molecule-debian:9'
     - MOLECULE_DIST: 'jam82/molecule-debian:10'
-    - MOLECULE_DIST: 'jam82/molecule-opensuse:15'
+    - MOLECULE_DIST: 'jam82/molecule-debian:11'
+    - MOLECULE_DIST: 'jam82/molecule-fedora:latest'
+    - MOLECULE_DIST: 'jam82/molecule-opensuse:latest'
     - MOLECULE_DIST: 'jam82/molecule-opensuse:tumbleweed'
     - MOLECULE_DIST: 'jam82/molecule-oraclelinux:7'
     - MOLECULE_DIST: 'jam82/molecule-oraclelinux:8'
@@ -27,7 +27,7 @@ env:
     - MOLECULE_DIST: 'jam82/molecule-ubuntu:20.04'
 
 install:
-  - pip install ansible-lint docker flake8 molecule testinfra yamllint
+  - pip install ansible ansible-lint docker molecule molecule-docker yamllint
 
 script:
   - molecule --version

@@ -1,6 +1,6 @@
 ---
 # file: requirements.yml
 
-- src: https://github.com/jam82/ansible-role-common.git
+- src: https://github.com/jam82/ansible-role-baseline.git
   name: common
   version: master
