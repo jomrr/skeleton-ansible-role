@@ -4,11 +4,11 @@
 {% raw %}
 - name: Prepare
   hosts: all
-  become: True
-  gather_facts: False
+  become: true
+  gather_facts: false
   vars:
-    epel_enabled: True
-    upgrade_enabled: False
+    epel_enabled: true
+    upgrade_enabled: false
   tasks:
     # this is done to save time, just fire all commands
     - name: Set fact for os-specific bootstrapping

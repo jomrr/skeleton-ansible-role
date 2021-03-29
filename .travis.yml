@@ -1,0 +1,17 @@
+---
+# role: ansible-role-skeleton
+# file: .travis.yml
+
+language: python
+
+python:
+  - "3.9"
+
+services: docker
+
+install:
+  - pip install ansible ansible-lint docker molecule molecule-docker testinfra yamllint
+
+script:
+  - molecule --version
+  - ansible --version

@@ -16,25 +16,25 @@ lint: |
 platforms:
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-alpine311
     image: "jam82/molecule-alpine:3.11"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-alpine
     image: "jam82/molecule-alpine:latest"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-amazonlinux
     image: "jam82/molecule-amazonlinux:latest"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
@@ -42,9 +42,9 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-arch
     image: "jam82/molecule-archlinux:latest"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
@@ -52,17 +52,17 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-centos6
     image: "jam82/molecule-centos:6"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-centos7
     image: "jam82/molecule-centos:7"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
@@ -70,9 +70,9 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-centos8
     image: "jam82/molecule-centos:8"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
@@ -80,9 +80,9 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-debian9
     image: "jam82/molecule-debian:9"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
@@ -90,9 +90,9 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-debian10
     image: "jam82/molecule-debian:10"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
@@ -100,9 +100,9 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-debian
     image: "jam82/molecule-debian:latest"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
@@ -110,9 +110,9 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-opensuse15
     image: "jam82/molecule-opensuse:15"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
@@ -120,9 +120,9 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-opensuse
     image: "jam82/molecule-opensuse:latest"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
@@ -130,9 +130,9 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-opensuse-tumbleweed
     image: "jam82/molecule-opensuse:tumbleweed"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
@@ -140,17 +140,17 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-oraclelinux6
     image: "jam82/molecule-oraclelinux:6"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-oraclelinux7
     image: "jam82/molecule-oraclelinux:7"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
@@ -158,9 +158,9 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-oraclelinux8
     image: "jam82/molecule-oraclelinux:8"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
@@ -168,9 +168,9 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-oraclelinux
     image: "jam82/molecule-oraclelinux:latest"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
@@ -178,9 +178,9 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-ubuntu1604
     image: "jam82/molecule-ubuntu:16.04"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
@@ -188,9 +188,9 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-ubuntu1804
     image: "jam82/molecule-ubuntu:18.04"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
@@ -198,9 +198,9 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-ubuntu2004
     image: "jam82/molecule-ubuntu:20.04"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
@@ -208,9 +208,9 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - name: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}-ubuntu
     image: "jam82/molecule-ubuntu:latest"
-    override_command: False
-    pre_build_image: True
-    privileged: True
+    override_command: false
+    pre_build_image: true
+    privileged: true
     tmpfs:
       - /tmp
       - /run
@@ -218,20 +218,19 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
 provisioner:
   name: ansible
-  log: True
+  log: true
   playbooks:
     prepare: ../resources/playbooks/prepare.yml
     converge: ../resources/playbooks/converge.yml
   inventory:
     group_vars:
       all:
-        {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled: True
+        {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled: true
 verifier:
   name: testinfra
   env:
     PYTHONWARNINGS: "ignore"
   directory: ../resources/tests
   options:
-    v: True
-    sudo: True
-{{ blank_line }}
+    v: true
+    sudo: true

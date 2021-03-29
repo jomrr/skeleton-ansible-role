@@ -17,8 +17,8 @@ platforms:
   - name: {{ role_name | replace('ansible-role-', '') }}-default
     image: ${MOLECULE_DIST:-"jam82/molecule-ubuntu:20.04"}
     command: ${MOLECULE_DOCKER_CMD:-""}
-    pre_build_image: True
-    tty: False
+    pre_build_image: true
+    tty: false
     tmpfs:
       - /tmp
       - /run
@@ -26,20 +26,19 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
 provisioner:
   name: ansible
-  log: True
+  log: true
   playbooks:
     prepare: ../resources/playbooks/prepare.yml
     converge: ../resources/playbooks/converge.yml
   inventory:
     group_vars:
       all:
-        {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled: True
+        {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled: true
 verifier:
   name: testinfra
   env:
     PYTHONWARNINGS: "ignore"
   directory: ../resources/tests
   options:
-    v: True
-    sudo: True
-{{ blank_line }}
+    v: true
+    sudo: true

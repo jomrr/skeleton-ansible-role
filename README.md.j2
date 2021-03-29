@@ -21,7 +21,7 @@ Variables and defaults for this role:
 
 | variable | default value in defaults/main.yml | description |
 | -------- | ---------------------------------- | ----------- |
-| {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled | False | determine whether role is enabled (True) or not (False) |
+| {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled | false | determine whether role is enabled (true) or not (False) |
 
 ## Dependencies
 
@@ -35,9 +35,9 @@ None.
 # file: site.yml
 
 - hosts: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_systems
-  become: True
+  become: true
   vars:
-    {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled: True
+    {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled: true
   roles:
     - role: {{ role_name }}
 ```
@@ -53,4 +53,3 @@ See [LICENSE](https://github.com/jam82/{{ role_name }}/blob/master/LICENSE) file
 ## References
 
 - [ArchWiki](https://wiki.archlinux.org/)
-{{ blank_line }}
