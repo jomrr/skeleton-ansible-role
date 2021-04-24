@@ -22,20 +22,24 @@ lint: |
 platforms:
   - name: {{ role_name | replace('ansible-role-', '') }}-arch
     box: "archlinux/archlinux"
-  - name: {{ role_name | replace('ansible-role-', '') }}-centos8
+  - name: {{ role_name | replace('ansible-role-', '') }}-centos
     box: "centos/8"
-  - name: {{ role_name | replace('ansible-role-', '') }}-debian10
-    box: "debian/buster64"
-  - name: {{ role_name | replace('ansible-role-', '') }}-fedora31
-    box: "fedora/31-cloud-base"
-  - name: {{ role_name | replace('ansible-role-', '') }}-ubuntu1804
-    box: "generic/ubuntu1804"
+  - name: {{ role_name | replace('ansible-role-', '') }}-debian
+    box: "debian/bullseye64"
+  - name: {{ role_name | replace('ansible-role-', '') }}-fedora
+    box: "fedora/33-cloud-base"
+  - name: {{ role_name | replace('ansible-role-', '') }}-opensuse
+    box: "generic/opensuse15"
+  - name: {{ role_name | replace('ansible-role-', '') }}-oracle
+    box: "generic/oracle8"
+  - name: {{ role_name | replace('ansible-role-', '') }}-ubuntu
+    box: "generic/ubuntu2004"
 provisioner:
   name: ansible
   log: true
   playbooks:
-    prepare: ../resources/playbooks/prepare.yml
     converge: ../resources/playbooks/converge.yml
+    verify: ../resources/playbooks/verify.yml
   inventory:
     group_vars:
       all:

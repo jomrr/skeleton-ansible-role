@@ -9,27 +9,33 @@ python:
 
 services: docker
 
+cache:
+  pip: true
+  directories:
+  - ".tox"
+
 env:
+  global:
+    - TOX_PARALLEL_NO_SPINNER=1
   matrix:
-    - MOLECULE_DIST: 'jam82/molecule-alpine:latest'
-    - MOLECULE_DIST: 'jam82/molecule-amazonlinux:latest'
-    - MOLECULE_DIST: 'jam82/molecule-archlinux:latest'
-    - MOLECULE_DIST: 'jam82/molecule-centos:7'
-    - MOLECULE_DIST: 'jam82/molecule-centos:8'
-    - MOLECULE_DIST: 'jam82/molecule-debian:10'
-    - MOLECULE_DIST: 'jam82/molecule-debian:11'
-    - MOLECULE_DIST: 'jam82/molecule-fedora:latest'
-    - MOLECULE_DIST: 'jam82/molecule-opensuse:latest'
-    - MOLECULE_DIST: 'jam82/molecule-opensuse:tumbleweed'
-    - MOLECULE_DIST: 'jam82/molecule-oraclelinux:7'
-    - MOLECULE_DIST: 'jam82/molecule-oraclelinux:8'
-    - MOLECULE_DIST: 'jam82/molecule-ubuntu:18.04'
-    - MOLECULE_DIST: 'jam82/molecule-ubuntu:20.04'
+    - TOX_IMG="Alpine"    TOX_ANSIBLE="{29,210}"
+    - TOX_IMG="Amazon"    TOX_ANSIBLE="{29,210}"
+    - TOX_IMG="CentOS"    TOX_ANSIBLE="{29,210}"
+    - TOX_IMG="Debian"    TOX_ANSIBLE="{29,210}"
+    - TOX_IMG="Fedora"    TOX_ANSIBLE="{29,210}"
+    - TOX_IMG="OpenSuse"  TOX_ANSIBLE="{29,210}"
+    - TOX_IMG="Oracle"    TOX_ANSIBLE="{29,210}"
+    - TOX_IMG="Ubuntu"    TOX_ANSIBLE="{29,210}"
+
+before_install:
+  - python -m pip install --upgrade pip
 
 install:
-  - pip install ansible ansible-lint docker molecule molecule-docker yamllint
+  - pip install tox-travis
 
 script:
-  - molecule --version
-  - ansible --version
-  - molecule test
+  - tox -e $(echo py${TRAVIS_PYTHON_VERSION} | tr -d .)-an${TOX_ANSIBLE}-${TOX_IMG} -p 2 -o true
+  - |
+    rm -r .tox/py*/log/*                                                               
+    find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
+

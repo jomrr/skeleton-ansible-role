@@ -1,0 +1,12 @@
+---
+# role: {{ role_name }}
+# file: molecule/resources/playbooks/verify.yml
+
+- name: Verify
+  hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+    - name: "Assertions"
+      assert:
+        that: true

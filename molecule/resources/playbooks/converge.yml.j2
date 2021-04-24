@@ -5,11 +5,9 @@
 - name: Converge
   hosts: all
   become: true
-  pre_tasks:
-    - name: "Include variables to converge playbook"
-      include_vars: vars.yml
-  roles:
-    # if you want to enable requirements put them in requirements.yml
-    # and add here
-    # - role: common
-    - role: {{ role_name }}
+  vars:
+    baseline_role_enabled: false
+    {{ role_name | replace('ansible-role-', '') }}_role_enabled: true
+  roles: # to enable required roles put them in requirements.yml and add here
+    # - baseline
+    - role: '../{{ role_name }}'

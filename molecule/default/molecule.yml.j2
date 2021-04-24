@@ -12,11 +12,88 @@ lint: |
   set -e
   yamllint .
   ansible-lint
-  flake8
 platforms:
-  - name: {{ role_name | replace('ansible-role-', '') }}-default
-    image: ${MOLECULE_DIST:-"jam82/molecule-ubuntu:20.04"}
-    command: ${MOLECULE_DOCKER_CMD:-""}
+  - name: {{ role_name | replace('ansible-role-', '') }}-alpine
+    image: "jam82/molecule-alpine:latest"
+    pre_build_image: true
+    privileged: true
+    tmpfs:
+      - /tmp
+      - /run
+  - name: {{ role_name | replace('ansible-role-', '') }}-amazonlinux
+    image: "jam82/molecule-amazonlinux:latest"
+    pre_build_image: true
+    privileged: true
+    tmpfs:
+      - /tmp
+      - /run
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name | replace('ansible-role-', '') }}-arch
+    image: "jam82/molecule-archlinux:latest"
+    pre_build_image: true
+    privileged: true
+    tmpfs:
+      - /tmp
+      - /run
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name | replace('ansible-role-', '') }}-centos
+    image: "jam82/molecule-centos:latest"
+    pre_build_image: true
+    privileged: true
+    tmpfs:
+      - /tmp
+      - /run
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name | replace('ansible-role-', '') }}-debian
+    image: "jam82/molecule-debian:latest"
+    pre_build_image: true
+    privileged: true
+    tmpfs:
+      - /tmp
+      - /run
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name | replace('ansible-role-', '') }}-fedora
+    image: "jam82/molecule-fedora:latest"
+    pre_build_image: true
+    privileged: true
+    tmpfs:
+      - /tmp
+      - /run
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name | replace('ansible-role-', '') }}-opensuse
+    image: "jam82/molecule-opensuse:15"
+    pre_build_image: true
+    privileged: true
+    tmpfs:
+      - /tmp
+      - /run
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name | replace('ansible-role-', '') }}-tumbleweed
+    image: "jam82/molecule-opensuse:tumbleweed"
+    pre_build_image: true
+    privileged: true
+    tmpfs:
+      - /tmp
+      - /run
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name | replace('ansible-role-', '') }}-oraclelinux
+    image: "jam82/molecule-oraclelinux:latest"
+    pre_build_image: true
+    privileged: true
+    tmpfs:
+      - /tmp
+      - /run
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - name: {{ role_name | replace('ansible-role-', '') }}-ubuntu
+    image: "jam82/molecule-ubuntu:latest"
     pre_build_image: true
     privileged: true
     tmpfs:
@@ -28,17 +105,11 @@ provisioner:
   name: ansible
   log: true
   playbooks:
-    prepare: ../resources/playbooks/prepare.yml
     converge: ../resources/playbooks/converge.yml
+    verify: ../resources/playbooks/verify.yml
   inventory:
     group_vars:
       all:
         {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled: true
 verifier:
-  name: testinfra
-  env:
-    PYTHONWARNINGS: "ignore"
-  directory: ../resources/tests
-  options:
-    v: true
-    sudo: true
+  name: ansible
