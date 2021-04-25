@@ -9,12 +9,22 @@ python:
 
 services: docker
 
+branches:
+  only:
+    - master
+
+cache:
+  pip: true
+
 before_install:
   - python -m pip install --upgrade pip
 
 install:
-  - pip install -r requirements.txt
+  - pip install ansible tox-travis molecule molecule-docker
 
 script:
-  - ansible --version
-  - molecule --version
+  - ../
+  - ansible-galaxy role init --role-skeleton=ansible-role-skeleton ansible-role-test
+  - cd ansible-role-test
+  - git init && git add .
+  - molecule lint
