@@ -23,7 +23,7 @@ install:
   - pip install ansible tox-travis molecule molecule-docker
 
 script:
-  - ../
+  - cd ..
   - ansible-galaxy role init --role-skeleton=ansible-role-skeleton ansible-role-test
   - cd ansible-role-test
   - git init && git add .
