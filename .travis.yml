@@ -11,7 +11,7 @@ services: docker
 
 branches:
   only:
-    - master
+    - main
 
 cache:
   pip: true
