@@ -4,11 +4,11 @@
 
 ## Supported Platforms
 
-- Alpine 3.11
+- Alpine 3.12, 3.13
 - Archlinux
-- CentOS 8
-- Debian 9, 10
-- Fedora 31
+- CentOS 7, 8
+- Debian 10,11
+- Fedora 33
 - Ubuntu 18.04, 20.04
 
 ## Requirements
@@ -17,11 +17,12 @@ Ansible 2.9 or higher is recommended.
 
 ## Variables
 
-Variables and defaults for this role:
+Variables and defaults for this role.
 
-| variable | default value in defaults/main.yml | description |
-| -------- | ---------------------------------- | ----------- |
-| {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled | false | determine whether role is enabled (true) or not (False) |
+### defaults/main.yml
+```yaml
+{{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled: false
+```
 
 ## Dependencies
 
@@ -36,6 +37,7 @@ None.
 
 - hosts: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_systems
   become: true
+  gather_facts: true
   vars:
     {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled: true
   roles:
@@ -45,7 +47,7 @@ None.
 ## License and Author
 
 - Author:: [jam82](https://github.com/jam82/)
-- Copyright:: 2020, [jam82](https://github.com/jam82/)
+- Copyright:: 2021, [jam82](https://github.com/jam82/)
 
 Licensed under [MIT License](https://opensource.org/licenses/MIT).
 See [LICENSE](https://github.com/jam82/{{ role_name }}/blob/master/LICENSE) file in repository.

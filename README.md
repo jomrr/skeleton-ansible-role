@@ -32,8 +32,17 @@ Table of Contents
 - have a predefined README.md skeleton
 - use consistent comments in each `yml`-file
 
-![Comment](comment.png)
-**Fig. 1:** Code Example of a newly generated role skeleton for `ansible-role-foreman`
+```yaml
+---
+# role: ansible-role-foreman
+# file: defaults/main.yml
+
+# The role is disabled by default, so you do not get in trouble.
+# Checked in tasks/main.yml which executes a block if role is enabled.
+foreman_role_enabled: false
+```
+
+**Listing 1:** Code Example of a newly generated role skeleton for `ansible-role-foreman`
 
 ## Quickstart
 
