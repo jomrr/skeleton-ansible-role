@@ -1,5 +1,7 @@
 # ansible-role-skeleton
 
+![GitHub](https://img.shields.io/github/license/jam82/ansible-role-skeleton) [![Build Status](https://travis-ci.org/jam82/ansible-role-skeleton.svg?branch=main)](https://travis-ci.org/jam82/ansible-role-skeleton)
+
 **[Molecule](https://molecule.readthedocs.io/en/latest/)-based role skeleton for use with ansible-galaxy to create a new ansible role.**
 
 > This README does not explain how to use molecule. Please read the [docs](https://molecule.readthedocs.io/en/latest/) if you need to.
