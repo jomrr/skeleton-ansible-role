@@ -3,5 +3,5 @@
 # file: defaults/main.yml
 
 # The role is disabled by default, so you do not get in trouble.
-# Checked in tasks/main.yml which includes tasks.yml if enabled.
+# Checked in tasks/main.yml which uses a tasks block if enabled.
 {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled: false
