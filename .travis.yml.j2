@@ -9,6 +9,10 @@ python:
 
 services: docker
 
+branches:
+  only:
+    - main
+
 cache:
   pip: true
   directories:
@@ -17,7 +21,7 @@ cache:
 env:
   global:
     - TOX_PARALLEL_NO_SPINNER=1
-  matrix:
+  jobs:
     - TOX_IMG="Alpine"    TOX_ANSIBLE="{29,210}"
     - TOX_IMG="Amazon"    TOX_ANSIBLE="{29,210}"
     - TOX_IMG="Arch"      TOX_ANSIBLE="{29,210}"
@@ -35,7 +39,6 @@ install:
   - pip install tox-travis
 
 script:
-  - tox -e $(echo py${TRAVIS_PYTHON_VERSION} | tr -d .)-an${TOX_ANSIBLE}-${TOX_IMG} -p 2 -o true
-  - |
-    rm -r .tox/py*/log/*                                                               
-    find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
+  - tox -e $(echo py${TRAVIS_PYTHON_VERSION} | tr -d .)-an${TOX_ANSIBLE}-${TOX_IMG} -p
+  - rm -r .tox/py*/log/*
+  - find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
