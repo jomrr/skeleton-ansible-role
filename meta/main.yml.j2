@@ -19,7 +19,7 @@ galaxy_info:
   # If this a Container Enabled role, provide the minimum Ansible Container version.
   # min_ansible_container_version:
 
-  github_branch: master
+  github_branch: main
 
   # platforms is a list of platforms, and each platform has a name and a list of versions.
   #
@@ -56,7 +56,7 @@ galaxy_info:
 
   galaxy_tags: []
 
-  dependencies:
-    - src: https://github.com/jam82/ansible-role-baseline.git
-      name: common
-      version: main
+dependencies:
+  - role: common
+    src: https://github.com/jam82/ansible-role-baseline.git
+    version: main
