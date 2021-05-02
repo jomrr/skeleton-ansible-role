@@ -20,19 +20,19 @@ lint: |
   ansible-lint
   flake8
 platforms:
-  - name: {{ role_name | replace('ansible-role-', '') }}-arch
+  - name: arch-{{ role_name | replace('ansible-role-', '') }}
     box: "archlinux/archlinux"
-  - name: {{ role_name | replace('ansible-role-', '') }}-centos
+  - name: centos-{{ role_name | replace('ansible-role-', '') }}
     box: "centos/8"
-  - name: {{ role_name | replace('ansible-role-', '') }}-debian
+  - name: debian-{{ role_name | replace('ansible-role-', '') }}
     box: "debian/bullseye64"
-  - name: {{ role_name | replace('ansible-role-', '') }}-fedora
+  - name: fedora-{{ role_name | replace('ansible-role-', '') }}
     box: "fedora/33-cloud-base"
-  - name: {{ role_name | replace('ansible-role-', '') }}-opensuse
+  - name: opensuse-{{ role_name | replace('ansible-role-', '') }}
     box: "generic/opensuse15"
-  - name: {{ role_name | replace('ansible-role-', '') }}-oracle
+  - name: oracle-{{ role_name | replace('ansible-role-', '') }}
     box: "generic/oracle8"
-  - name: {{ role_name | replace('ansible-role-', '') }}-ubuntu
+  - name: ubuntu-{{ role_name | replace('ansible-role-', '') }}
     box: "generic/ubuntu2004"
 provisioner:
   name: ansible

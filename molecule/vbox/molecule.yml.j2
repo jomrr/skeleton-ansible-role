@@ -16,39 +16,39 @@ lint: |
   yamllint .
   ansible-lint
 platforms:
-  - name: {{ role_name | replace('ansible-role-', '') }}-alpine
+  - name: alpine-{{ role_name | replace('ansible-role-', '') }}
     box: "generic/alpine312"
     cpus: 2
     memory: 1024
-  - name: {{ role_name | replace('ansible-role-', '') }}-amazon
+  - name: amazon-{{ role_name | replace('ansible-role-', '') }}
     box: "bento/amazonlinux-2"
     cpus: 2
     memory: 1024
-  - name: {{ role_name | replace('ansible-role-', '') }}-arch
+  - name: arch-{{ role_name | replace('ansible-role-', '') }}
     box: "archlinux/archlinux"
     cpus: 2
     memory: 1024
-  - name: {{ role_name | replace('ansible-role-', '') }}-centos
+  - name: centos-{{ role_name | replace('ansible-role-', '') }}
     box: "centos/8"
     cpus: 2
     memory: 1024
-  - name: {{ role_name | replace('ansible-role-', '') }}-debian
+  - name: debian-{{ role_name | replace('ansible-role-', '') }}
     box: "debian/bullseye64"
     cpus: 2
     memory: 1024
-  - name: {{ role_name | replace('ansible-role-', '') }}-fedora
+  - name: fedora-{{ role_name | replace('ansible-role-', '') }}
     box: "fedora/33-cloud-base"
     cpus: 2
     memory: 1024
-  - name: {{ role_name | replace('ansible-role-', '') }}-opensuse
+  - name: opensuse-{{ role_name | replace('ansible-role-', '') }}
     box: "generic/opensuse15"
     cpus: 2
     memory: 1024
-  - name: {{ role_name | replace('ansible-role-', '') }}-oracle
+  - name: oracle-{{ role_name | replace('ansible-role-', '') }}
     box: "generic/oracle8"
     cpus: 2
     memory: 1024
-  - name: {{ role_name | replace('ansible-role-', '') }}-ubuntu
+  - name: ubuntu-{{ role_name | replace('ansible-role-', '') }}
     box: "ubuntu/focal64"
     cpus: 2
     memory: 1024
