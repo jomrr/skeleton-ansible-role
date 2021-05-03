@@ -6,16 +6,18 @@
 
 ## Supported Platforms
 
-- Alpine 3.12, 3.13
+- Alpine
 - Archlinux
-- CentOS 7, 8
-- Debian 10,11
-- Fedora 33
-- Ubuntu 18.04, 20.04
+- CentOS
+- Debian
+- Fedora
+- OpenSuse Leap, Tumbleweed
+- OracleLinux
+- Ubuntu
 
 ## Requirements
 
-Ansible 2.9 or higher is recommended.
+Ansible 2.9 or higher.
 
 ## Variables
 
@@ -38,7 +40,7 @@ None.
 # role: {{ role_name }}
 # file: site.yml
 
-- hosts: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_systems
+- hosts: all
   become: true
   gather_facts: true
   vars:

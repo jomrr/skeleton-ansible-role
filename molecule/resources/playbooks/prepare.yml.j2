@@ -9,33 +9,33 @@
   tasks:
     - name: "Update apk cache"
       apk:
-        update_cache: yes
+        update_cache: true
       when: ansible_pkg_mgr == "apk"
 
     - name: "Update apt cache"
       apt:
-        update_cache: yes
+        update_cache: true
       when: ansible_pkg_mgr == "apt"
 
     - name: "Update dnf cache"
       dnf:
-        update_cache: yes
+        update_cache: true
       when: ansible_pkg_mgr == "dnf"
 
     - name: "Update pacman cache"
       pacman:
-        update_cache: yes
+        update_cache: true
       when: ansible_pkg_mgr == "pacman"
 
     - name: "Update yum cache"
       yum:
-        update_cache: yes
+        update_cache: true
       when: ansible_pkg_mgr == "yum"
 
     - name: "Update zypper cache"
       zypper:
         name: sudo
-        update_cache: yes
+        update_cache: true
       when: ansible_pkg_mgr == "zypper"
 
   # roles:  # see requirements.yml in root directory of this role
