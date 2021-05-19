@@ -11,9 +11,6 @@ driver:
   provider:
     name: libvirt
     type: libvirt
-    options:
-      memory: 2048
-      cpus: 2
 lint: |
   set -e
   yamllint .
@@ -22,18 +19,32 @@ lint: |
 platforms:
   - name: arch-{{ role_name | replace('ansible-role-', '') }}
     box: "archlinux/archlinux"
+    memory: 2048
+    cpus: 2
   - name: centos-{{ role_name | replace('ansible-role-', '') }}
     box: "centos/8"
+    memory: 2048
+    cpus: 2
   - name: debian-{{ role_name | replace('ansible-role-', '') }}
     box: "debian/bullseye64"
+    memory: 2048
+    cpus: 2
   - name: fedora-{{ role_name | replace('ansible-role-', '') }}
     box: "fedora/33-cloud-base"
+    memory: 2048
+    cpus: 2
   - name: opensuse-{{ role_name | replace('ansible-role-', '') }}
     box: "generic/opensuse15"
+    memory: 2048
+    cpus: 2
   - name: oracle-{{ role_name | replace('ansible-role-', '') }}
     box: "generic/oracle8"
+    memory: 2048
+    cpus: 2
   - name: ubuntu-{{ role_name | replace('ansible-role-', '') }}
     box: "generic/ubuntu2004"
+    memory: 2048
+    cpus: 2
 provisioner:
   name: ansible
   log: true
