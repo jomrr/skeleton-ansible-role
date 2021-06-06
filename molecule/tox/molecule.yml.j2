@@ -5,7 +5,7 @@
 dependency:
   name: galaxy
   options:
-    role-file: requirements.yml
+    requirements-file: requirements.yml
 driver:
   name: docker
 lint: |
@@ -17,7 +17,7 @@ platforms:
     image: ${MOLECULE_IMG:-"jam82/molecule-debian:latest"}
     command: ${MOLECULE_IMG_CMD:-""}
     pre_build_image: true
-    privileged: true
+    privileged: false
     tmpfs:
       - /tmp
       - /run
