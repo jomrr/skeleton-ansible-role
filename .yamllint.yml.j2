@@ -12,14 +12,14 @@ rules:
     max-spaces-inside: 1
     level: error
   colons:
-    max-spaces-after: -1
+    max-spaces-after: 1
     level: error
   commas:
-    max-spaces-after: -1
+    max-spaces-after: 1
     level: error
-  comments: disable
-  comments-indentation: disable
-  document-start: disable
+  comments: enable
+  comments-indentation: enable
+  document-start: enable
   empty-lines:
     max: 3
     level: error
@@ -32,7 +32,7 @@ rules:
   new-lines:
     type: unix
   trailing-spaces: enable
-  truthy: disable
+  truthy: enable
 
 ignore: |
   .cache/

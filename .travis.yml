@@ -13,9 +13,6 @@ branches:
   only:
     - main
 
-cache:
-  pip: true
-
 before_install:
   - python -m pip install --upgrade pip
 

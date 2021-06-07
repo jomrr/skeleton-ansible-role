@@ -1,6 +1,6 @@
 # {{ role_name }}
 
-![GitHub](https://img.shields.io/github/license/jam82/{{ role_name }}) [![Build Status](https://travis-ci.org/jam82/{{ role_name }}.svg?branch=main)](https://travis-ci.org/jam82/{{ role_name }})
+![GitHub](https://img.shields.io/github/license/jam82/{{ role_name }}) ![GitHub last commit](https://img.shields.io/github/last-commit/jam82/{{ role_name }}) ![GitHub issues](https://img.shields.io/github/issues-raw/jam82/{{ role_name }}) ![Travis (.com) branch](https://img.shields.io/travis/com/jam82/{{ role_name }}/main?label=ansible-lint%20latest)
 
 **Ansible role for setting up {{ role_name|replace('ansible-role-', '') }}.**
 
@@ -38,7 +38,8 @@ None.
 ```yaml
 ---
 # role: {{ role_name }}
-# file: site.yml
+# play: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}
+# file: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}.yml
 
 - hosts: all
   become: true
