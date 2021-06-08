@@ -1,6 +1,6 @@
 # ansible-role-skeleton
 
-![GitHub](https://img.shields.io/github/license/jam82/ansible-role-skeleton) [![Build Status](https://travis-ci.org/jam82/ansible-role-skeleton.svg?branch=main)](https://travis-ci.org/jam82/ansible-role-skeleton)
+![GitHub](https://img.shields.io/github/license/jam82/ansible-role-skeleton) ![GitHub last commit](https://img.shields.io/github/last-commit/jam82/ansible-role-skeleton) ![GitHub issues](https://img.shields.io/github/issues-raw/jam82/ansible-role-skeleton) ![Travis (.com) branch](https://img.shields.io/travis/com/jam82/ansible-role-skeleton/main?label=build)
 
 **[Molecule](https://molecule.readthedocs.io/en/latest/)-based role skeleton for use with ansible-galaxy to create a new ansible role.**
 
