@@ -2,10 +2,10 @@
 # role: {{ role_name }}
 # file: .travis.yml
 
-language: python
+os: linux
+dist: focal
 
-python:
-  - "3.9"
+language: python
 
 branches:
   only:
@@ -18,5 +18,4 @@ install:
   - pip install ansible yamllint ansible-lint
 
 script:
-  - yamllint .
   - ansible-lint
