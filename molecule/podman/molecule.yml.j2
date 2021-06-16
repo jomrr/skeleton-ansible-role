@@ -14,8 +14,8 @@ lint: |
   ansible-lint
 platforms:
   - name: default-{{ role_name | replace('ansible-role-', '') }}
-    image: ${MOLECULE_IMG:-"jam82/molecule-debian:latest"}
-    command: ${MOLECULE_IMG_CMD:-""}
+    image: "${uns:-jam82}/molecule-${img:-debian}:${tag:-latest}"
+    command: ""
     pre_build_image: true
     tty: false
     tmpfs:
