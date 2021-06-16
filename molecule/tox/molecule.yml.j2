@@ -14,18 +14,15 @@ lint: |
   ansible-lint
 platforms:
   - name: {{ role_name | replace('ansible-role-', '') }}-${TOX_ENVNAME:-"default"}
-    image: ${MOLECULE_IMG:-"jam82/molecule-debian:latest"}
-    command: ${MOLECULE_IMG_CMD:-""}
+    image: "${uns:-jam82}/molecule-${img:-debian}:${tag:-latest}"
+    command: ""
     pre_build_image: true
     privileged: true
     tmpfs:
       - /tmp
       - /run
-    volumes:
-      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
 provisioner:
   name: ansible
-  log: true
   playbooks:
     prepare: ../resources/playbooks/prepare.yml
     converge: ../resources/playbooks/converge.yml
