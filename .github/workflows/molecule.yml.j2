@@ -1,7 +1,7 @@
 ---
 # role: {{ role_name }}
 # file: .github/workflows/molecule.yml
-
+{% raw %}
 name: Molecule
 
 on:
@@ -53,4 +53,4 @@ jobs:
           TOX_PARALLEL_NO_SPINNER: 1
           uns: "${{ github.repository_owner }}"
           img: "${{ matrix.use.img }}"
-          tag: "${{ matrix.use.tag }}"
+          tag: "${{ matrix.use.tag }}"{% endraw %}

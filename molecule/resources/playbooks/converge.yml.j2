@@ -8,6 +8,5 @@
   vars:
     baseline_role_enabled: false
     {{ role_name | replace('ansible-role-', '') }}_role_enabled: true
-  roles:  # this enables custom directory name on checkout, e.g. 'my_role'
-    # - jam82.baseline
-    - role: ../../../../
+  roles:
+    - role: {% raw %}"{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') }}"{% endraw %}
