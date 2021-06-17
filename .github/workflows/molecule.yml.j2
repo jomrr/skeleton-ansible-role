@@ -1,7 +1,7 @@
 ---
 # role: {{ role_name }}
 # file: .github/workflows/molecule.yml
-{% raw %}
+
 name: Molecule
 
 on:
@@ -10,9 +10,9 @@ on:
       - '**/README.md'
       - '**/doc/**'
   schedule:
-    - cron: '7 8 9 * *'
+    - cron: '{{ range(1, 59) | random }} {{ range(1, 24) | random }} {{ range(1, 28) | random }} * *'
   workflow_dispatch:
-
+{% raw %}
 jobs:
   molecule:
     runs-on: ubuntu-latest
