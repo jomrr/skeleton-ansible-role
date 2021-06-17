@@ -10,7 +10,7 @@ on:
       - '**/README.md'
       - '**/doc/**'
   schedule:
-    - cron: '{{ range(1, 59) | random }} {{ range(1, 24) | random }} {{ range(1, 28) | random }} * *'
+    - cron: '{{ range(1, 59) | random }} {{ range(1, 23) | random }} {{ range(1, 28) | random }} * *'
   workflow_dispatch:
 {% raw %}
 jobs:
