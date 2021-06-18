@@ -19,7 +19,7 @@
       skip: true
   loop: "{{ query('first_found', params, errors='ignore') }}"
 
-- name: "Install packages for {% endraw %}{{ role_name }}{% raw %}"
+- name: "Install packages for {% endraw %}{{ role_name | replace('ansible-role-', '') | replace('-','_') }}{% raw %}"
   package:
     name: "{{ {% endraw %}{{ role_name | replace('ansible-role-', '') | replace('-','_') }}{% raw %}_packages }}"
     state: present
