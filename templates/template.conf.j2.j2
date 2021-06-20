@@ -1,3 +1,5 @@
-{% raw %}# {{ template_destpath }}
-# vim: set noai sw=4 tw=4 ts=4 et:{% endraw %}
-# managed by ansible role: jam82.{{ role_name | replace('ansible-role-', '') | replace('-','_') }}
+{% raw %}
+# {{ template_destpath }}
+# vi: ft=conf
+{{ ansible_managed | comment }}
+{% endraw %}
