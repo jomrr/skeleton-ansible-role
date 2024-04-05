@@ -12,7 +12,7 @@ deps =
 commands =
     molecule test -s tox
 setenv =
-    TOX_ENVNAME={envname}-{env:uns:jam82}-{env:img:debian}-{env:tag:latest}
+    TOX_ENVNAME={envname}-{env:uns:jomrr}-{env:img:debian}-{env:tag:latest}
     MOLECULE_EPHEMERAL_DIRECTORY=/tmp/.molecule/{{ role_name }}/{env:TOX_ENVNAME}
     ANSIBLE_FORCE_COLOR=1
     PY_COLORS=1

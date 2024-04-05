@@ -1,6 +1,6 @@
 # ansible-role-skeleton
 
-![GitHub](https://img.shields.io/github/license/jam82/ansible-role-skeleton) ![GitHub last commit](https://img.shields.io/github/last-commit/jam82/ansible-role-skeleton) ![GitHub issues](https://img.shields.io/github/issues-raw/jam82/ansible-role-skeleton) ![Travis (.com) branch](https://img.shields.io/travis/com/jam82/ansible-role-skeleton/main?label=build)
+![GitHub](https://img.shields.io/github/license/jomrr/ansible-role-skeleton) ![GitHub last commit](https://img.shields.io/github/last-commit/jomrr/ansible-role-skeleton) ![GitHub issues](https://img.shields.io/github/issues-raw/jomrr/ansible-role-skeleton) ![Travis (.com) branch](https://img.shields.io/travis/com/jomrr/ansible-role-skeleton/main?label=build)
 
 **[Molecule](https://molecule.readthedocs.io/en/latest/)-based role skeleton for use with ansible-galaxy to create a new ansible role.**
 
@@ -31,7 +31,7 @@ Table of Contents
     - `vars/{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml`
 - install os specific packages
 - use a predefined travis file
-- use predefined containers for testing, see [buildah-molecule-images](https://github.com/jam82/buildah-molecule-images)
+- use predefined containers for testing, see [buildah-molecule-images](https://github.com/jomrr/buildah-molecule-images)
 - have a predefined README.md skeleton
 - use consistent comments in each `yml`-file
 
@@ -50,7 +50,7 @@ foreman_role_enabled: false
 ## Quickstart
 
 ```shell
-git clone https://github.com/jam82/ansible-role-skeleton.git
+git clone https://github.com/jomrr/ansible-role-skeleton.git
 ansible-galaxy init --role-skeleton=ansible-role-skeleton ansible-role-<rolename>
 ```
 
@@ -117,7 +117,7 @@ vagrant plugin install vagrant-libvirt
 
 [Podman](https://podman.io) should work out of the box, after it is installed.
 
-To install it, see the [official instructions](https://podman.io/getting-started/installation.html) or you can also use my [ansible-role-podman](https://github.com/jam82/ansible-role-podman).
+To install it, see the [official instructions](https://podman.io/getting-started/installation.html) or you can also use my [ansible-role-podman](https://github.com/jomrr/ansible-role-podman).
 
 ### Tox Scenario (tox)
 
@@ -133,7 +133,7 @@ For using the [VirtualBox](https://virtualbox.org) (vbox) scenario install it on
 To create a new ansible role with this skeleton, do the following:
 
 ```shell
-git clone https://github.com/jam82/ansible-role-skeleton.git
+git clone https://github.com/jomrr/ansible-role-skeleton.git
 ansible-galaxy init --role-skeleton=ansible-role-skeleton ansible-role-<rolename>
 ```
 
@@ -161,8 +161,8 @@ to create a role skeleton for ansible-role-dhcpd.
 
 ## Author and License
 
-- Author:: [jam82](https://github.com/jam82/)
-- Copyright:: 2020, [jam82](https://github.com/jam82/)
+- Author:: [jomrr](https://github.com/jomrr/)
+- Copyright:: 2020, [jomrr](https://github.com/jomrr/)
 
 Licensed under [MIT License](http://opensource.org/licenses/mit-license.php).
-See [LICENSE](https://github.com/jam82/ansible-role-skeleton/blob/master/LICENSE) file in repository.
+See [LICENSE](https://github.com/jomrr/ansible-role-skeleton/blob/master/LICENSE) file in repository.

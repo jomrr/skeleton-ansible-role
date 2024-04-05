@@ -14,7 +14,7 @@ lint: |
   ansible-lint
 platforms:
   - name: alpine-{{ role_name | replace('ansible-role-', '') }}
-    image: "jam82/molecule-alpine:latest"
+    image: "jomrr/molecule-alpine:latest"
     command: ""
     pre_build_image: true
     privileged: true
@@ -22,7 +22,7 @@ platforms:
       - /tmp
       - /run
   - name: arch-{{ role_name | replace('ansible-role-', '') }}
-    image: "jam82/molecule-archlinux:latest"
+    image: "jomrr/molecule-archlinux:latest"
     command: ""
     pre_build_image: true
     privileged: true
@@ -30,7 +30,7 @@ platforms:
       - /tmp
       - /run
   - name: centos-{{ role_name | replace('ansible-role-', '') }}
-    image: "jam82/molecule-centos:latest"
+    image: "jomrr/molecule-centos:latest"
     command: ""
     pre_build_image: true
     privileged: true
@@ -38,7 +38,7 @@ platforms:
       - /tmp
       - /run
   - name: debian-{{ role_name | replace('ansible-role-', '') }}
-    image: "jam82/molecule-debian:latest"
+    image: "jomrr/molecule-debian:latest"
     command: ""
     pre_build_image: true
     privileged: true
@@ -46,7 +46,7 @@ platforms:
       - /tmp
       - /run
   - name: fedora-{{ role_name | replace('ansible-role-', '') }}
-    image: "jam82/molecule-fedora:latest"
+    image: "jomrr/molecule-fedora:latest"
     command: ""
     pre_build_image: true
     privileged: true
@@ -54,7 +54,7 @@ platforms:
       - /tmp
       - /run
   - name: opensuse-{{ role_name | replace('ansible-role-', '') }}
-    image: "jam82/molecule-opensuse:15"
+    image: "jomrr/molecule-opensuse:15"
     command: ""
     pre_build_image: true
     privileged: true
@@ -62,7 +62,7 @@ platforms:
       - /tmp
       - /run
   - name: tumbleweed-{{ role_name | replace('ansible-role-', '') }}
-    image: "jam82/molecule-opensuse:tumbleweed"
+    image: "jomrr/molecule-opensuse:tumbleweed"
     command: ""
     pre_build_image: true
     privileged: true
@@ -70,7 +70,7 @@ platforms:
       - /tmp
       - /run
   - name: oracle-{{ role_name | replace('ansible-role-', '') }}
-    image: "jam82/molecule-oraclelinux:latest"
+    image: "jomrr/molecule-oraclelinux:latest"
     command: ""
     pre_build_image: true
     privileged: true
@@ -78,7 +78,7 @@ platforms:
       - /tmp
       - /run
   - name: ubuntu-{{ role_name | replace('ansible-role-', '') }}
-    image: "jam82/molecule-ubuntu:latest"
+    image: "jomrr/molecule-ubuntu:latest"
     command: ""
     pre_build_image: true
     privileged: true
