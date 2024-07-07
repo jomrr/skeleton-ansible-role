@@ -3,19 +3,22 @@
 # file: .pre-commit-config.yaml
 
 repos:
-- repo: https://github.com/ansible-community/ansible-lint
-  rev: v24.2.1
-  hooks:
-  - id: ansible-lint
-- repo: https://github.com/commitizen-tools/commitizen
-  rev: v3.20.0
-  hooks:
-  - id: commitizen
-    stages:
-    - commit-msg
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.5.0
-  hooks:
-  - id: detect-private-key
-  - id: end-of-file-fixer
-  - id: trailing-whitespace
+  - repo: https://github.com/ansible-community/ansible-lint
+    rev: v24.6.1
+    hooks:
+      - id: ansible-lint
+        always_run: true
+        entry: ansible-lint --force-color .
+        language: python
+        pass_filenames: false
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.27.0
+    hooks:
+      - id: commitizen
+        stages: [commit-msg]
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
