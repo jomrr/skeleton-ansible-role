@@ -1,0 +1,21 @@
+[project]
+name = "ansible-role-skeleton"
+version = "0.0.0"
+description = "Ansible role for setting up skeleton."
+authors = ["Jonas Mauer"]
+license = "MIT"
+keywords = []
+
+repository = "https://github.com/jomrr/ansible-role-skeleton"
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+
+[tool.semantic_release]
+commit_message = "build(release): version {version}"
+major_on_zero = true
+upload_to_pypi = false
+upload_to_vcs_release = true
+version_toml = [
+    "pyproject.toml:project.version",
+]

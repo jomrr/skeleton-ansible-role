@@ -1,4 +1,0 @@
-ansible-lint
-flake8
-molecule-docker
-yamllint
