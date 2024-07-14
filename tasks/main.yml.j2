@@ -2,14 +2,12 @@
 # role: jomrr.{{ role_name }}
 # file: tasks/main.yml
 
-# Main tasks for {{ role_name }}
-
 {% raw %}
 - name: "Set os_family specific variables"
-  include_vars: '{{ ansible_os_family }}.yml'
+  ansible.builtin.include_vars: '{{ ansible_os_family }}.yml'
 
 - name: "Set distribution specific variables"
-  include_vars: "{{ item }}"
+  ansible.builtin.include_vars: "{{ item }}"
   vars:
     params:
       files:
@@ -22,7 +20,7 @@
   loop: "{{ query('first_found', params, errors='ignore') }}"
 
 - name: "Install packages for {% endraw %}{{ role_name }}{% raw %}"
-  package:
+  ansible.builtin.package:
     name: "{{ {% endraw %}{{ role_name }}{% raw %}_packages }}"
     state: present
 {% endraw %}
