@@ -10,7 +10,7 @@ driver:
   name: podman
 lint: set -e; ansible-lint
 platforms:
-  - name: "{{ role_name | replace('ansible-role-', '') }}"
+  - name: "{{ role_name }}"
     image: "docker.io/${uns:-${nsp:-jomrr}/molecule-${img:-fedora}:${tag:-latest}"
     pre_build_image: true
     entrypoint: null

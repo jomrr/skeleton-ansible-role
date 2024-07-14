@@ -1,6 +1,6 @@
 ---
 # role: jomrr.{{ role_name }}
-# file: molecule/kvm/molecule.yml
+# file: molecule/libvirt/molecule.yml
 
 dependency:
   name: galaxy
@@ -13,31 +13,31 @@ driver:
     type: libvirt
 lint: set -e; ansible-lint
 platforms:
-  - name: almalinux-{{ role_name | replace('ansible-role-', '') }}
+  - name: almalinux-{{ role_name }}
     box: "generic/almalinux9"
     memory: 2048
     cpus: 2
-  - name: arch-{{ role_name | replace('ansible-role-', '') }}
+  - name: arch-{{ role_name }}
     box: "archlinux/archlinux"
     memory: 2048
     cpus: 2
-  - name: debian-{{ role_name | replace('ansible-role-', '') }}
+  - name: debian-{{ role_name }}
     box: "debian/bookworm64"
     memory: 2048
     cpus: 2
-  - name: fedora-{{ role_name | replace('ansible-role-', '') }}
+  - name: fedora-{{ role_name }}
     box: "fedora/40-cloud-base"
     memory: 4096
     cpus: 2
-  - name: opensuse-{{ role_name | replace('ansible-role-', '') }}
+  - name: opensuse-{{ role_name }}
     box: "generic/opensuse15"
     memory: 2048
     cpus: 2
-  - name: oracle-{{ role_name | replace('ansible-role-', '') }}
+  - name: oracle-{{ role_name }}
     box: "generic/oracle9"
     memory: 2048
     cpus: 2
-  - name: ubuntu-{{ role_name | replace('ansible-role-', '') }}
+  - name: ubuntu-{{ role_name }}
     box: "generic/ubuntu2404"
     memory: 2048
     cpus: 2

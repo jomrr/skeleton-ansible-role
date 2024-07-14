@@ -2,7 +2,7 @@
 # role: jomrr.{{ role_name }}
 # file: molecule/resources/playbooks/verify.yml
 
-- name: "PLAYBOOK | Verify | {{ role_name | replace('ansible-role-', '') }}"
+- name: "PLAYBOOK | Verify | {{ role_name }}"
   hosts: all
   gather_facts: false
   tasks:

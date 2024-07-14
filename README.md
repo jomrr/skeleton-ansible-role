@@ -4,7 +4,7 @@
 
 **[Molecule](https://molecule.readthedocs.io/en/latest/)-based role skeleton for use with ansible-galaxy to create a new ansible role.**
 
-> This README does not explain how to use molecule. Please read the [docs](https://molecule.readthedocs.io/en/latest/) if you need to.
+> This README does not explain how to use molecule. Please read the [docs](https://ansible.readthedocs.io/projects/molecule/) if you need to.
 
 Table of Contents
 
@@ -48,7 +48,7 @@ Table of Contents
 
 ```shell
 git clone https://github.com/jomrr/skeleton-ansible-role
-ansible-galaxy role init --role-skeleton=./skeleton-ansible-role ansible-role-<rolename>
+ansible-galaxy role init --role-skeleton=./skeleton-ansible-role <rolename>
 ```
 
 For a more convenient way see [Usage](#usage).
@@ -105,7 +105,7 @@ To create a new ansible role with this skeleton, do the following:
 
 ```shell
 git clone https://github.com/jomrr/skeleton-ansible-role.git
-ansible-galaxy role init --role-skeleton=skeleton-ansible-role ansible-role-<rolename>
+ansible-galaxy role init --role-skeleton=./skeleton-ansible-role <rolename>
 ```
 
 If you want to use it in a more convenient way, create a custom function e.g. in ~/.bashrc
@@ -114,10 +114,10 @@ If you want to use it in a more convenient way, create a custom function e.g. in
 # ansible-galaxy init with custom role-skeleton
 ag-role() {
     if [ -z "$1" ]; then
-        echo "Please specify a role name that will be appended to ansible-role-<rolename>"
+        echo "Please specify a role name that will be appended to <rolename>"
         return 1
     fi
-    ansible-galaxy role init --role-skeleton=${2:-'./skeleton-ansible-role'} ansible-role-$1
+    ansible-galaxy role init --role-skeleton=${2:-'./skeleton-ansible-role'} $1
 }
 ```
 

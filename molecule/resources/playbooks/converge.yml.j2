@@ -2,7 +2,7 @@
 # role: jomrr.{{ role_name }}
 # file: molecule/resources/playbooks/converge.yml
 
-- name: "PLAYBOOK | Converge | {{ role_name | replace('ansible-role-', '') }}"
+- name: "PLAYBOOK | Converge | {{ role_name }}"
   hosts: all
   roles:
     - role: {% raw %}"{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') }}"{% endraw %}
