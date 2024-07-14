@@ -1,5 +1,5 @@
 ---
-# role: {{ role_name }}
+# role: jomrr.{{ role_name }}
 # file: molecule/default/molecule.yml
 
 dependency:
@@ -7,84 +7,15 @@ dependency:
   options:
     requirements-file: requirements.yml
 driver:
-  name: docker
-lint: |
-  set -e
-  yamllint .
-  ansible-lint
+  name: podman
+lint: set -e; ansible-lint
 platforms:
-  - name: alpine-{{ role_name | replace('ansible-role-', '') }}
-    image: "jomrr/molecule-alpine:latest"
-    command: ""
+  - name: "{{ role_name | replace('ansible-role-', '') }}"
+    image: "docker.io/${uns:-${nsp:-jomrr}/molecule-${img:-fedora}:${tag:-latest}"
     pre_build_image: true
-    privileged: true
-    tmpfs:
-      - /tmp
-      - /run
-  - name: arch-{{ role_name | replace('ansible-role-', '') }}
-    image: "jomrr/molecule-archlinux:latest"
-    command: ""
-    pre_build_image: true
-    privileged: true
-    tmpfs:
-      - /tmp
-      - /run
-  - name: centos-{{ role_name | replace('ansible-role-', '') }}
-    image: "jomrr/molecule-centos:latest"
-    command: ""
-    pre_build_image: true
-    privileged: true
-    tmpfs:
-      - /tmp
-      - /run
-  - name: debian-{{ role_name | replace('ansible-role-', '') }}
-    image: "jomrr/molecule-debian:latest"
-    command: ""
-    pre_build_image: true
-    privileged: true
-    tmpfs:
-      - /tmp
-      - /run
-  - name: fedora-{{ role_name | replace('ansible-role-', '') }}
-    image: "jomrr/molecule-fedora:latest"
-    command: ""
-    pre_build_image: true
-    privileged: true
-    tmpfs:
-      - /tmp
-      - /run
-  - name: opensuse-{{ role_name | replace('ansible-role-', '') }}
-    image: "jomrr/molecule-opensuse:15"
-    command: ""
-    pre_build_image: true
-    privileged: true
-    tmpfs:
-      - /tmp
-      - /run
-  - name: tumbleweed-{{ role_name | replace('ansible-role-', '') }}
-    image: "jomrr/molecule-opensuse:tumbleweed"
-    command: ""
-    pre_build_image: true
-    privileged: true
-    tmpfs:
-      - /tmp
-      - /run
-  - name: oracle-{{ role_name | replace('ansible-role-', '') }}
-    image: "jomrr/molecule-oraclelinux:latest"
-    command: ""
-    pre_build_image: true
-    privileged: true
-    tmpfs:
-      - /tmp
-      - /run
-  - name: ubuntu-{{ role_name | replace('ansible-role-', '') }}
-    image: "jomrr/molecule-ubuntu:latest"
-    command: ""
-    pre_build_image: true
-    privileged: true
-    tmpfs:
-      - /tmp
-      - /run
+    entrypoint: null
+    command: null
+    systemd: true
 provisioner:
   name: ansible
   log: true
@@ -92,9 +23,5 @@ provisioner:
     prepare: ../resources/playbooks/prepare.yml
     converge: ../resources/playbooks/converge.yml
     verify: ../resources/playbooks/verify.yml
-  inventory:
-    group_vars:
-      all:
-        {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled: true
 verifier:
   name: ansible

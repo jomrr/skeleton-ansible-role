@@ -1,47 +1,17 @@
 ---
-# role: {{ role_name }}
+# role: jomrr.{{ role_name }}
 # file: meta/main.yml
 
 galaxy_info:
-  role_name: {{ role_name|replace('ansible-role-', '') }}
-  author: jomrr
-  description: Ansible role for setting up {{ role_name|replace('ansible-role-', '') }}.
+  role_name: {{ role_name | replace('ansible-role-', '') }}
+
+galaxy_info:
+  namespace: jomrr
+  role_name: {{ role_name | replace('ansible-role-', '') }}
+  author: 'Jonas Mauer'
   company: ''
-
-  issue_tracker_url: https://github.com/jomrr/{{ role_name }}/issues
-
+  description: "Ansible role for setting up {{ role_name | replace('ansible-role-', '') }}."
   license: MIT
-
-  min_ansible_version: "2.9"
-
-  platforms:
-    - name: Alpine
-      versions:
-        - any
-    - name: ArchLinux
-      versions:
-        - any
-    - name: Debian
-      versions:
-        - buster
-        - bullseye
-    - name: EL
-      versions:
-        - "7"
-        - "8"
-    - name: Fedora
-      versions:
-        - any
-    - name: opensuse
-      versions:
-        - "15.0"
-        - "15.1"
-        - "15.2"
-    - name: Ubuntu
-      versions:
-        - bionic
-        - focal
-
-  galaxy_tags: []
-
-dependencies: []
+  issue_tracker_url: "https://github.com/jomrr/{{ role_name }}/issues"
+  min_ansible_version: "2.17"
+galaxy_tags: []

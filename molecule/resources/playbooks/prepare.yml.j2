@@ -1,39 +1,34 @@
 ---
-# role: {{ role_name }}
+# role: jomrr.{{ role_name }}
 # file: molecule/resources/playbooks/prepare.yml
 
-- name: Prepare
+- name: "PLAYBOOK | Prepare | {{ role_name | replace('ansible-role-', '') }}"
   hosts: all
   become: true
   gather_facts: true
   tasks:
     - name: "Update apk cache"
-      apk:
+      community.general.apk:
         update_cache: true
       when: ansible_pkg_mgr == "apk"
 
     - name: "Update apt cache"
-      apt:
+      ansible.builtin.apt:
         update_cache: true
       when: ansible_pkg_mgr == "apt"
 
     - name: "Update dnf cache"
-      dnf:
+      ansible.builtin.dnf:
         update_cache: true
       when: ansible_pkg_mgr == "dnf"
 
     - name: "Update pacman cache"
-      pacman:
+      community.general.pacman:
         update_cache: true
       when: ansible_pkg_mgr == "pacman"
 
-    - name: "Update yum cache"
-      yum:
-        update_cache: true
-      when: ansible_pkg_mgr == "yum"
-
     - name: "Update zypper cache"
-      zypper:
+      community.general.zypper:
         name: sudo
         update_cache: true
       when: ansible_pkg_mgr == "zypper"

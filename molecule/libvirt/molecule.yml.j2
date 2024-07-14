@@ -1,6 +1,6 @@
 ---
-# role: {{ role_name }}
-# file: molecule/vbox/molecule.yml
+# role: jomrr.{{ role_name }}
+# file: molecule/kvm/molecule.yml
 
 dependency:
   name: galaxy
@@ -9,49 +9,38 @@ dependency:
 driver:
   name: vagrant
   provider:
-    name: virtualbox
-    type: virtualbox
-lint: |
-  set -e
-  yamllint .
-  ansible-lint
+    name: libvirt
+    type: libvirt
+lint: set -e; ansible-lint
 platforms:
-  - name: alpine-{{ role_name | replace('ansible-role-', '') }}
-    box: "generic/alpine312"
+  - name: almalinux-{{ role_name | replace('ansible-role-', '') }}
+    box: "generic/almalinux9"
+    memory: 2048
     cpus: 2
-    memory: 1024
-  - name: amazon-{{ role_name | replace('ansible-role-', '') }}
-    box: "bento/amazonlinux-2"
-    cpus: 2
-    memory: 1024
   - name: arch-{{ role_name | replace('ansible-role-', '') }}
     box: "archlinux/archlinux"
+    memory: 2048
     cpus: 2
-    memory: 1024
-  - name: centos-{{ role_name | replace('ansible-role-', '') }}
-    box: "centos/8"
-    cpus: 2
-    memory: 1024
   - name: debian-{{ role_name | replace('ansible-role-', '') }}
-    box: "debian/bullseye64"
+    box: "debian/bookworm64"
+    memory: 2048
     cpus: 2
-    memory: 1024
   - name: fedora-{{ role_name | replace('ansible-role-', '') }}
-    box: "fedora/33-cloud-base"
+    box: "fedora/40-cloud-base"
+    memory: 4096
     cpus: 2
-    memory: 1024
   - name: opensuse-{{ role_name | replace('ansible-role-', '') }}
     box: "generic/opensuse15"
+    memory: 2048
     cpus: 2
-    memory: 1024
   - name: oracle-{{ role_name | replace('ansible-role-', '') }}
-    box: "generic/oracle8"
+    box: "generic/oracle9"
+    memory: 2048
     cpus: 2
-    memory: 1024
   - name: ubuntu-{{ role_name | replace('ansible-role-', '') }}
-    box: "ubuntu/focal64"
+    box: "generic/ubuntu2404"
+    memory: 2048
     cpus: 2
-    memory: 1024
 provisioner:
   name: ansible
   log: true
@@ -59,9 +48,5 @@ provisioner:
     prepare: ../resources/playbooks/prepare.yml
     converge: ../resources/playbooks/converge.yml
     verify: ../resources/playbooks/verify.yml
-  inventory:
-    group_vars:
-      all:
-        {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled: true
 verifier:
   name: ansible

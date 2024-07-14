@@ -2,6 +2,6 @@
 # role: {{ role_name }}
 # file: defaults/main.yml
 
-# The role is disabled by default, so you do not get in trouble.
-# Checked in tasks/main.yml which includes tasks/tasks.yml if enabled.
-{{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled: false
+# Default variables for {{ role_name }}
+
+{{ role_name }}_description: "This is a skeleton role"

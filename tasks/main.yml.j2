@@ -1,7 +1,28 @@
 ---
-# role: {{ role_name }}
+# role: jomrr.{{ role_name }}
 # file: tasks/main.yml
 
-- name: "Check if {{ role_name }} is enabled"
-  include_tasks: tasks.yml
-  when: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled | bool
+# Main tasks for {{ role_name }}
+
+{% raw %}
+- name: "Set os_family specific variables"
+  include_vars: '{{ ansible_os_family }}.yml'
+
+- name: "Set distribution specific variables"
+  include_vars: "{{ item }}"
+  vars:
+    params:
+      files:
+        - '{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml'
+      paths:
+        - 'vars'
+      skip: true
+  loop: "{{ query('first_found', params, errors='ignore') }}"
+
+- name: "Install packages for {% endraw %}{{ role_name | replace('ansible-role-', '') }}{% raw %}"
+  package:
+    name: "{{ {% endraw %}{{ role_name | replace('ansible-role-', '') }}{% raw %}_packages }}"
+    state: present
+{% endraw %}

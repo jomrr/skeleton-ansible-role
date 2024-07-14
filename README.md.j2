@@ -1,69 +1,47 @@
-# {{ role_name }}
+# Ansible role `jomrr.{{ role_name }}`
 
-![GitHub](https://img.shields.io/github/license/jomrr/{{ role_name }}) ![GitHub last commit](https://img.shields.io/github/last-commit/jomrr/{{ role_name }}) ![GitHub issues](https://img.shields.io/github/issues-raw/jomrr/{{ role_name }}) ![Travis (.com) branch](https://img.shields.io/travis/com/jomrr/{{ role_name }}/main?label=travis) [![Molecule](https://github.com/jomrr/{{ role_name }}/actions/workflows/molecule.yml/badge.svg)](https://github.com/jomrr/{{ role_name }}/actions/workflows/molecule.yml)
+![GitHub](https://img.shields.io/github/license/jomrr/ansible-role-{{ role_name }}) ![GitHub last commit](https://img.shields.io/github/last-commit/jomrr/ansible-role-{{ role_name }}) ![GitHub issues](https://img.shields.io/github/issues-raw/jomrr/ansible-role-{{ role_name }})
 
-**Ansible role for setting up {{ role_name|replace('ansible-role-', '') }}.**
+**Ansible role for setting up {{ role_name }}.**
+
+## Description
+
+Install and configure {{ role_name }} with Ansible.
+
+## Prerequisites
+
+### System packages (Fedora)
+
+- `python3` (>= 3.10)
+
+### Python (requirements.txt)
+
+- ansible >= 2.17
+
+## Dependencies (requirements.yml)
 
 ## Supported Platforms
 
-| OS Family | Distribution  | Latest | Supported Version(s) | Comment |
-|-----------|---------------|--------|----------------------|---------|
-| Alpine    | Alpine        | :heavy_check_mark: | 3.12, 3.13 | |
-| Archlinux | Archlinux     | :heavy_check_mark: | - | |
-|           | Manjaro       | :heavy_check_mark: | - | |
-| Debian    | Debian        | :heavy_check_mark: | 10, 11 | |
-|           | Ubuntu        | :heavy_check_mark: | 18.04, 20.04 | |
-| RedHat    | Almalinux     | :heavy_check_mark: | 8 | |
-|           | Amazonlinux   | :x: | - | not tested, image not working |
-|           | Centos        | :heavy_check_mark: | 8 | |
-|           | Fedora        | :heavy_check_mark: | 33, 34, Rawhide | |
-|           | Oraclelinux   | :heavy_check_mark: | 8 | |
-| Suse      | OpenSuse Leap | :heavy_check_mark: | 15.1, 15.2, 15.3 | |
-|           | Tumbleweed    | :heavy_check_mark: | - | |
+| OS Family | Distribution | Version | Container Image |
+|-----------|--------------|---------|-----------------|
 
-## Requirements
+## Role Variables
 
-Ansible 2.9 or higher.
-
-## Variables
-
-Variables and defaults for this role.
-
-### defaults/main.yml
-
-```yaml
-{{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled: false
-```
-
-## Dependencies
-
-None.
+The following are the default variables that can be adjusted:
 
 ## Example Playbook
 
-```yaml
----
-# role: {{ role_name }}
-# play: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}
-# file: {{ role_name | replace('ansible-role-', '') | replace('-','_') }}.yml
+Example playbooks(s) that show how to use this role.
 
-- hosts: all
-  become: true
-  gather_facts: true
-  vars:
-    {{ role_name | replace('ansible-role-', '') | replace('-','_') }}_role_enabled: true
-  roles:
-    - role: {{ role_name }}
-```
+## Author(s) and License
 
-## License and Author
+- :octocat:                 Author::    [jomrr](https://github.com/jomrr)
+- :triangular_flag_on_post: Copyright:: 2024, Jonas Mauer
+- :page_with_curl:          License::   [MIT](LICENSE)
 
-- Author:: [jomrr](https://github.com/jomrr/)
-- Copyright:: 2021, [jomrr](https://github.com/jomrr/)
-
-Licensed under [MIT License](https://opensource.org/licenses/MIT).
-See [LICENSE](https://github.com/jomrr/{{ role_name }}/blob/master/LICENSE) file in repository.
+Licensed under [MIT License](http://opensource.org/licenses/mit-license.php).
+See [LICENSE](https://github.com/jomrr/{{ role_name }}/blob/main/LICENSE) file in repository.
 
 ## References
 
-- [ArchWiki](https://wiki.archlinux.org/)
+---
