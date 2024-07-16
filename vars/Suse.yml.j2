@@ -2,4 +2,9 @@
 # role: jomrr.{{ role_name }}
 # file: vars/Suse.yml
 
-{{ role_name }}_packages: []
+# Suse packages for {{ role_name }}
+{{ role_name }}_packages:
+  - "{{ role_name }}"
+
+# Suse service name for {{ role_name }}
+{{ role_name }}_service_name: "{{ role_name }}d"

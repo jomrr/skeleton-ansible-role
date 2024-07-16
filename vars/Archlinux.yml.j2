@@ -2,4 +2,9 @@
 # role: jomrr.{{ role_name }}
 # file: vars/Archlinux.yml
 
-{{ role_name }}_packages: []
+# Archlinux packages for {{ role_name }}
+{{ role_name }}_packages:
+  - "{{ role_name }}"
+
+# Archlinux service name for {{ role_name }}
+{{ role_name }}_service_name: "{{ role_name }}d"

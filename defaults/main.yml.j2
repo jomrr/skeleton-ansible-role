@@ -1,7 +1,10 @@
 ---
-# role: {{ role_name }}
+# role: jomrr.{{ role_name }}
 # file: defaults/main.yml
 
 # Default variables for {{ role_name }}
 
-{{ role_name }}_description: "This is a skeleton role"
+# Restart and enable the service
+{{ role_name }}_service:
+  state: restarted
+  enabled: true

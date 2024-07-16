@@ -2,4 +2,9 @@
 # role: jomrr.{{ role_name }}
 # file: vars/Alpine.yml
 
-{{ role_name }}_packages: []
+# Alpine packages for {{ role_name }}
+{{ role_name }}_packages:
+  - "{{ role_name }}"
+
+# Alpine service name for {{ role_name }}
+{{ role_name }}_service_name: "{{ role_name }}d"

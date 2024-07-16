@@ -1,10 +1,10 @@
 ---
 # role: jomrr.{{ role_name }}
-# file: vars/Debian.yml
+# file: vars/main.yml
 
-# Debian packages for {{ role_name }}
+# Default packages for {{ role_name }}
 {{ role_name }}_packages:
   - "{{ role_name }}"
 
-# Debian service name for {{ role_name }}
+# Default service name for {{ role_name }}
 {{ role_name }}_service_name: "{{ role_name }}d"

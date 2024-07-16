@@ -24,3 +24,18 @@
     name: "{{ {% endraw %}{{ role_name }}{% raw %}_packages }}"
     state: present
 {% endraw %}
+
+- name: "Configure {{ role_name }}"
+  ansible.builtin.template:
+    src: "template.conf.j2"
+    dest: "/etc/{{ role_name }}/{{ role_name }}.conf"
+    owner: root
+    group: root
+    mode: 0644
+  notify: "{{ role_name }} service"
+
+- name: "Set {{ role_name }} service state"
+  ansible.builtin.service:
+    name: "{% raw %}{{ {% endraw %}{{ role_name }}{% raw %}_service_name }}{% endraw %}"
+    state: "{% raw %}{{ {% endraw %}{{ role_name }}{% raw %}_service.state | default(restarted) }}{% endraw %}"
+    enabled: "{% raw %}{{ {% endraw %}{{ role_name }}{% raw %}_service.enabled | default(true) }}{% endraw %}"

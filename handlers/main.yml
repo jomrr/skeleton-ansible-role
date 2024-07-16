@@ -1,0 +1,9 @@
+---
+# role: jomrr.{{ role_name }}
+# file: handlers/main.yml
+
+- name: "{{ role_name }} service"
+  ansible.builtin.service:
+    name: "{{ role_name }}"
+    state: "{{ {{ role_name }}_service.state }}"
+    enabled: "{{ {{ role_name }}_service.enabled }}"

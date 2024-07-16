@@ -2,4 +2,9 @@
 # role: jomrr.{{ role_name }}
 # file: vars/RedHat.yml
 
-{{ role_name }}_packages: []
+# RedHat packages for {{ role_name }}
+{{ role_name }}_packages:
+  - "{{ role_name }}"
+
+# RedHat service name for {{ role_name }}
+{{ role_name }}_service_name: "{{ role_name }}d"
