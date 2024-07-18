@@ -13,34 +13,10 @@ driver:
     type: libvirt
 lint: set -e; ansible-lint
 platforms:
-  - name: almalinux-{{ role_name }}
-    box: "generic/almalinux9"
-    memory: 2048
-    cpus: 2
-  - name: arch-{{ role_name }}
-    box: "archlinux/archlinux"
-    memory: 2048
-    cpus: 2
-  - name: debian-{{ role_name }}
-    box: "debian/bookworm64"
-    memory: 2048
-    cpus: 2
-  - name: fedora-{{ role_name }}
-    box: "fedora/40-cloud-base"
+  - name: ${img:-almalinux9}-{{ role_name }}
+    box: "${uns:-generic}/${img:-almalinux9}"
     memory: 4096
-    cpus: 2
-  - name: opensuse-{{ role_name }}
-    box: "generic/opensuse15"
-    memory: 2048
-    cpus: 2
-  - name: oracle-{{ role_name }}
-    box: "generic/oracle9"
-    memory: 2048
-    cpus: 2
-  - name: ubuntu-{{ role_name }}
-    box: "generic/ubuntu2404"
-    memory: 2048
-    cpus: 2
+    cpus: 4
 provisioner:
   name: ansible
   log: true
