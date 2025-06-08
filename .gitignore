@@ -1,4 +1,10 @@
-.cache/
+__pycache__/
+!.gitkeep
+.ansible/
+.idea/
 .tox/
-.vagrant/
+.venv/
 .vscode/
+cache/
+collections/*
+dist/

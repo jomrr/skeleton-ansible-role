@@ -2,9 +2,9 @@
 
 ![GitHub](https://img.shields.io/github/license/jomrr/skeleton-ansible-role) ![GitHub last commit](https://img.shields.io/github/last-commit/jomrr/skeleton-ansible-role) ![GitHub issues](https://img.shields.io/github/issues-raw/jomrr/skeleton-ansible-role) ![Travis (.com) branch](https://img.shields.io/travis/com/jomrr/skeleton-ansible-role/main?label=build)
 
-**[Molecule](https://molecule.readthedocs.io/en/latest/)-based role skeleton for use with ansible-galaxy to create a new ansible role.**
+**[Molecule](https://ansible.readthedocs.io/projects/molecule/en/latest/)-based role skeleton for use with ansible-galaxy to create a new ansible role.**
 
-> This README does not explain how to use molecule. Please read the [docs](https://ansible.readthedocs.io/projects/molecule/) if you need to.
+> This README does not explain how to use molecule. Please read the [docs](https://ansible.readthedocs.io/projects/molecule/en/latest/) if you need to.
 
 Table of Contents
 
@@ -12,13 +12,11 @@ Table of Contents
   - [Features](#features)
   - [Quickstart](#quickstart)
   - [Requirements](#requirements)
-    - [Docker Scenario (default)](#docker-scenario-default)
+    - [Podman Scenario (default)](#podman-scenario-default)
     - [Libvirt Scenario (kvm)](#libvirt-scenario-kvm)
     - [Podman Scenario (podman)](#podman-scenario-podman)
-    - [Tox Scenario (tox)](#tox-scenario-tox)
-    - [VirtualBox Scenario (vbox)](#virtualbox-scenario-vbox)
   - [Usage](#usage)
-  - [Author and License](#author-and-license)
+  - [Author(s) and License](#authors-and-license)
 
 ## Features
 
